@@ -5,9 +5,9 @@
             <h3>A list of our stuff</h3>
         </div>
     </div>
-    <div class="row text-center">
+    <div class="row text-center auto-clear">
         @foreach($services as $service)
-        <div class="col-md-4">
+        <div class="col-sm-6 col-md-4 col-lg-3">
             <span class="fa-stack fa-4x">
                 <i class="fa fa-circle fa-stack-2x text-primary"></i>
                 <i class="fa fa-{!! $service['icon'] !!} fa-stack-1x fa-inverse"></i>

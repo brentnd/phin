@@ -85,3 +85,19 @@ header {
         }
     }
 }
+
+@media (min-width: $screen-lg) {
+    @include auto-clear(lg)
+}
+
+@media (min-width: $screen-md) and (max-width: $screen-md-max) {
+    @include auto-clear(md)
+}
+
+@media (min-width: $screen-sm) and (max-width: $screen-sm-max) {
+    @include auto-clear(sm)
+}
+
+@media (max-width: $screen-xs-max) {
+    @include auto-clear(xs)
+}
