@@ -59,7 +59,7 @@
 
         <footer class="footer navbar-inverse ">
             <div class="container">
-                <p class="text-muted">Place sticky footer content here.</p>
+                <p class="text-muted">Copyright &copy; Phine. {{ date('Y') }}</p>
             </div>
         </footer>
 
