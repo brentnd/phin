@@ -2,6 +2,9 @@
 
 namespace Phine;
 
+use Exception;
+use Illuminate\Http\Request;
+use Symfony\Component\Debug\ExceptionHandler;
 use Illuminate\Container\Container;
 use Illuminate\Support\Facades\Facade;
 use Illuminate\Events\EventServiceProvider;
@@ -12,11 +15,23 @@ use Illuminate\View\ViewServiceProvider;
 use Illuminate\Translation\TranslationServiceProvider;
 use Phine\ServiceProviders\ConfigServiceProvider;
 use Phine\ServiceProviders\FakerServiceProvider;
+use Phine\ServiceProviders\ExceptionHandlerServiceProvider;
 use Illuminate\Support\Facades\Route as RouteFacade;
 
 class Application extends Container
 {
     protected $basePath;
+
+    public function handle(Request $request)
+    {
+        $this['request'] = $request;
+        try {
+            $response = RouteFacade::dispatch($request);
+        } catch (Exception $e) {
+            $response = $this[ExceptionHandler::class]->handle($e);
+        }
+        return $response;
+    }
 
     public function setBasePath($basePath)
     {
@@ -76,6 +91,7 @@ class Application extends Container
         with(new TranslationServiceProvider($this))->register();
         with(new ViewServiceProvider($this))->register();
         with(new FakerServiceProvider($this))->register();
+        with(new ExceptionHandlerServiceProvider($this))->register();
     }
 
     private function registerFacades()

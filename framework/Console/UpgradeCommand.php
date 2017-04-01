@@ -30,8 +30,10 @@ class UpgradeCommand extends Command
             return false;
         }
         // Copy the latest Phine framework from vendor into framework
-        $this->files->copyDirectory($this->base . '/vendor/brentnd/phine/framework', $this->base . '/framework');
-        $this->files->copy($this->base . '/vendor/brentnd/phine/phine', $this->base . '/phine');
+        $phine = $this->base . '/vendor/brentnd/phine';
+        $this->files->copyDirectory($phine . '/framework',        $this->base . '/framework');
+        $this->files->copy         ($phine . '/public/index.php', $this->base . '/public/index.php');
+        $this->files->copy         ($phine . '/phine',            $this->base . '/phine');
         // Copy doesn't preserve phine executableness, put it back
         $this->files->chmod($this->base . '/phine', 0755);
         $this->info("Phine upgraded successfully!");
