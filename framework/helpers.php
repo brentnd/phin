@@ -20,6 +20,13 @@ if (! function_exists('router')) {
     }
 }
 
+if (! function_exists('faker')) {
+    function faker()
+    {
+        return Container::getInstance()->make('faker');
+    }
+}
+
 if (! function_exists('route')) {
     function route($name, $parameters = [], $absolute = true)
     {

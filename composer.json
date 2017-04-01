@@ -24,7 +24,8 @@
         "illuminate/config": "^5.4",
         "illuminate/routing": "^5.4",
         "illuminate/events": "^5.4",
-        "illuminate/support": "^5.4"
+        "illuminate/support": "^5.4",
+        "fzaninotto/faker": "^1.6"
     },
     "require-dev": {
     }

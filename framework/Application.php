@@ -43,5 +43,6 @@ class Application extends Container
         with(new FilesystemServiceProvider($this))->register();
         with(new ConfigServiceProvider($this))->register();
         with(new ViewServiceProvider($this))->register();
+        with(new FakerServiceProvider($this))->register();
     }
 }
