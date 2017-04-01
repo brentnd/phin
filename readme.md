@@ -16,7 +16,6 @@ Simple setup which uses Illuminate components to make simple PHP sites.
 
 ## TODO
 * Deployment control
-* Serve commands
 * Other common sections
 * SocialMedia provider?
 * Bootswatch theme selector?

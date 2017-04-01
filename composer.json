@@ -25,8 +25,12 @@
         "illuminate/events": "^5.4",
         "illuminate/support": "^5.4",
         "illuminate/translation": "^5.4",
-        "fzaninotto/faker": "^1.6"
+        "fzaninotto/faker": "^1.6",
+        "symfony/console": "^2.5|^3.0"
     },
     "require-dev": {
-    }
+    },
+    "bin": [
+        "phine"
+    ]
 }
