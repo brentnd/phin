@@ -2,7 +2,7 @@
 
 $app = new Phine\Application(realpath(__DIR__.'/../'));
 
-$app['env'] = 'production';
+$app['env'] = 'local';
 
 require site_path('routes.php');
 

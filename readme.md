@@ -27,8 +27,8 @@ Just a few easy steps to get up and running
 
 ```bash
 mkdir newsite && cd newsite
-composer require brentnd/phine:dev-master
-./vendor/brentnd/phine/phine init
+composer require brentnd/phine
+./vendor/bin/phine init
 npm install
 gulp
 ```

@@ -3,19 +3,17 @@
 <?php
 
 if (file_exists(__DIR__.'/vendor/autoload.php')) {
-    require __DIR__.'/vendor/autoload.php';
-    $app = require_once __DIR__.'/framework/app.php';
+	require __DIR__ . '/vendor/autoload.php';
+    $app = require_once __DIR__.'/bootstrap/app.php';
 } else {
     require __DIR__.'/../../autoload.php';
-    $app = require_once __DIR__.'/framework/app.php';
+    $app = require_once __DIR__.'/bootstrap/app.php';
 }
 
 $serveCommand = new Phine\Console\ServeCommand($app);
 $initCommand = new Phine\Console\InitCommand($app);
-$upgradeCommand = new Phine\Console\UpgradeCommand($app);
 
-$app = new Symfony\Component\Console\Application('Phine', '0.0.0');
+$app = new Symfony\Component\Console\Application('Phine', '0.0.1');
 $app->add($serveCommand);
 $app->add($initCommand);
-$app->add($upgradeCommand);
 $app->run();
