@@ -3,14 +3,15 @@
 @section('title', 'Home page')
 
 @section('body')
-<div class="jumbotron">
-  <div class="container">
-    <h1>Hello, world!</h1>
-    <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-    <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
-  </div>
-</div>
-
+<header>
+    <div class="container">
+        <div class="intro-text">
+            <div class="intro-lead-in">Another Phine site..</div>
+            <div class="intro-heading">See the rest</div>
+            <a href="#about" class="page-scroll btn btn-xl">Learn More</a>
+        </div>
+    </div>
+</header>
 <div class="container">
   <div class="row">
     <div class="col-md-4">

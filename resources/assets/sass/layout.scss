@@ -1,13 +1,5 @@
-@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.0/css/font-awesome.min.css);
-
-$web-font-path: "https://fonts.googleapis.com/css?family=Open+Sans" !default;
-$font-family-sans-serif: 'Open Sans', sans-serif;
-
-$icon-font-path:   "../fonts/";
-$icon-font-name:   "fontawesome-webfont";
-$icon-font-svg-id: "fontawesomeregular";
-
-@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "variables.scss";
+@import "mixins.scss";
 
 /* Sticky footer styles
 -------------------------------------------------- */
@@ -19,6 +11,13 @@ html {
 body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
+    overflow-x: hidden;
+    @include body-font;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    @include heading-font;
+    font-weight: 700;
 }
 
 .footer {
@@ -34,4 +33,55 @@ body {
 #logo {
   max-width: 100%;
   height: 50px;
+}
+
+header {
+    background-image: url('/img/header-bg.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    @include background-cover;
+    text-align: center;
+    color: white;
+    .intro-text {
+        padding-top: 100px;
+        padding-bottom: 50px;
+        .intro-lead-in {
+            @include serif-font;
+            font-style: italic;
+            font-size: 22px;
+            line-height: 22px;
+            margin-bottom: 25px;
+        }
+        .intro-heading {
+            @include heading-font;
+            font-weight: 700;
+            font-size: 50px;
+            line-height: 50px;
+            margin-bottom: 25px;
+        }
+    }
+}
+
+@media(min-width:768px) {
+    header {
+        .intro-text {
+            padding-top: 300px;
+            padding-bottom: 200px;
+            .intro-lead-in {
+                @include serif-font;
+                font-style: italic;
+                font-size: 40px;
+                line-height: 40px;
+                margin-bottom: 25px;
+            }
+            .intro-heading {
+                @include heading-font;
+                font-weight: 700;
+                font-size: 75px;
+                line-height: 75px;
+                margin-bottom: 50px;
+            }
+        }
+    }
 }
