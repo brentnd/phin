@@ -1,15 +1,15 @@
 <?php
 
-use Illuminate\Container\Container;
+use Phin\Application;
+use Illuminate\Contracts\Routing\ResponseFactory;
 
 if (! function_exists('app')) {
     function app($make = null, $parameters = [])
     {
         if (is_null($make)) {
-            return Container::getInstance();
+            return Application::getInstance();
         }
-
-        return Container::getInstance()->make($make, $parameters);
+        return Application::getInstance()->make($make, $parameters);
     }
 }
 
@@ -24,6 +24,17 @@ if (! function_exists('asset')) {
     function asset($path, $secure = null)
     {
         return app('url')->asset($path, $secure);
+    }
+}
+
+if (! function_exists('response')) {
+    function response($content = '', $status = 200, array $headers = [])
+    {
+        $factory = app(ResponseFactory::class);
+        if (func_num_args() === 0) {
+            return $factory;
+        }
+        return $factory->make($content, $status, $headers);
     }
 }
 

@@ -17,6 +17,14 @@ class PageController extends Controller
         return view('pages.home', compact('services'));
     }
 
+    public function json()
+    {
+        return response()->json([
+            'some' => 'data',
+            'as' => 'json'
+        ]);
+    }
+
     private function fakeService()
     {
         return [

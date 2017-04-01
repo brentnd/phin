@@ -16,6 +16,7 @@ use Illuminate\Translation\TranslationServiceProvider;
 use Phin\ServiceProviders\ConfigServiceProvider;
 use Phin\ServiceProviders\FakerServiceProvider;
 use Phin\ServiceProviders\ExceptionHandlerServiceProvider;
+use Illuminate\Contracts\View\Factory as ViewFactoryContract;
 use Illuminate\Support\Facades\Route as RouteFacade;
 
 class Application extends Container
@@ -92,6 +93,10 @@ class Application extends Container
         with(new ViewServiceProvider($this))->register();
         with(new FakerServiceProvider($this))->register();
         with(new ExceptionHandlerServiceProvider($this))->register();
+        // Hack, also register 'view' as ViewFactoryContract for responseFactory
+        $this->singleton(ViewFactoryContract::class, function ($this) {
+            return $this['view'];
+        });
     }
 
     private function registerFacades()
