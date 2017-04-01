@@ -2,11 +2,18 @@
 
 <?php
 
-require __DIR__.'/vendor/autoload.php';
-$app = require_once __DIR__.'/framework/app.php';
+if (file_exists(__DIR__.'/vendor/autoload.php')) {
+    require __DIR__.'/vendor/autoload.php';
+    $app = require_once __DIR__.'/framework/app.php';
+} else {
+    require __DIR__.'/../../autoload.php';
+    $app = require_once __DIR__.'/../../../framework/app.php';
+}
 
 $serveCommand = new Phine\Console\ServeCommand($app);
+$initCommand = new Phine\Console\InitCommand($app);
 
 $app = new Symfony\Component\Console\Application('Phine', '0.0.0');
 $app->add($serveCommand);
+$app->add($initCommand);
 $app->run();
