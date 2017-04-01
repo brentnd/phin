@@ -15,8 +15,7 @@
             "Site\\": "site/"
         },
         "files": [
-            "framework/helpers.php",
-            "vendor/illuminate/support/helpers.php"
+            "framework/helpers.php"
         ]
     },
     "require": {
