@@ -3,6 +3,7 @@
 namespace App;
 
 use Phine\Controller;
+use Phine\FakerFacade as Faker;
 
 class PageController extends Controller
 {
@@ -18,11 +19,10 @@ class PageController extends Controller
 
     private function fakeService()
     {
-        $faker = faker();
         return [
-                'title' => $faker->word(),
-                'icon' => $faker->randomElement($array = $this->icons),
-                'content' => implode(' ', $faker->sentences(3)),
+                'title' => Faker::word(),
+                'icon' => Faker::randomElement($array = $this->icons),
+                'content' => implode(' ', Faker::sentences(3)),
             ];
     }
 }

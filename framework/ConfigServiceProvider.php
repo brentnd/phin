@@ -2,7 +2,6 @@
 
 namespace Phine;
 
-use Illuminate\Config\Repository;
 use Illuminate\Support\ServiceProvider;
 
 class ConfigServiceProvider extends ServiceProvider

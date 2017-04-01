@@ -8,6 +8,7 @@ use Illuminate\Events\EventServiceProvider;
 use Illuminate\Routing\RoutingServiceProvider;
 use Illuminate\Filesystem\FilesystemServiceProvider;
 use Illuminate\View\ViewServiceProvider;
+use Illuminate\Support\Facades\Route as RouteFacade;
 
 class Application extends Container
 {
@@ -38,11 +39,24 @@ class Application extends Container
             $this->setBasePath($basePath);
         }
         Container::setInstance($this);
+
+        $this->registerServiceProviders();
+        $this->registerFacades();
+    }
+
+    private function registerServiceProviders()
+    {
         with(new EventServiceProvider($this))->register();
         with(new RoutingServiceProvider($this))->register();
         with(new FilesystemServiceProvider($this))->register();
         with(new ConfigServiceProvider($this))->register();
         with(new ViewServiceProvider($this))->register();
         with(new FakerServiceProvider($this))->register();
+    }
+
+    private function registerFacades()
+    {
+        Facade::setFacadeApplication($this);
+        class_alias(RouteFacade::class, 'Route');
     }
 }
