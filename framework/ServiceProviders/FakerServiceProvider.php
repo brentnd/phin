@@ -1,6 +1,6 @@
 <?php
 
-namespace Phine;
+namespace Phine\ServiceProviders;
 
 use Faker\Factory as FakerFactory;
 use Illuminate\Support\ServiceProvider;

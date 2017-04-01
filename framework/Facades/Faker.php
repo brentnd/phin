@@ -1,10 +1,10 @@
 <?php
 
-namespace Phine;
+namespace Phine\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
-class FakerFacade extends Facade
+class Faker extends Facade
 {
     protected static function getFacadeAccessor()
     {

@@ -47,10 +47,10 @@ if (! function_exists('base_path')) {
     }
 }
 
-if (! function_exists('app_path')) {
-    function app_path($path = '')
+if (! function_exists('site_path')) {
+    function site_path($path = '')
     {
-        return app()->basePath().DIRECTORY_SEPARATOR.'app'.($path ? DIRECTORY_SEPARATOR.$path : $path);
+        return app()->basePath().DIRECTORY_SEPARATOR.'site'.($path ? DIRECTORY_SEPARATOR.$path : $path);
     }
 }
 

@@ -1,9 +1,9 @@
 <?php
 
-namespace App;
+namespace Site;
 
 use Phine\Controller;
-use Phine\FakerFacade as Faker;
+use Phine\Facades\Faker;
 
 class PageController extends Controller
 {

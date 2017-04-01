@@ -6,8 +6,11 @@ use Illuminate\Container\Container;
 use Illuminate\Support\Facades\Facade;
 use Illuminate\Events\EventServiceProvider;
 use Illuminate\Routing\RoutingServiceProvider;
+use Illuminate\Routing\UrlGenerator;
 use Illuminate\Filesystem\FilesystemServiceProvider;
 use Illuminate\View\ViewServiceProvider;
+use Phine\ServiceProviders\ConfigServiceProvider;
+use Phine\ServiceProviders\FakerServiceProvider;
 use Illuminate\Support\Facades\Route as RouteFacade;
 
 class Application extends Container
