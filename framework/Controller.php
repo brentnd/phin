@@ -1,6 +1,6 @@
 <?php
 
-namespace Phine;
+namespace Phin;
 
 use Illuminate\Routing\Controller as BaseController;
 

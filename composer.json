@@ -1,5 +1,5 @@
 {
-    "name": "brentnd/phine",
+    "name": "brentnd/phin",
     "description": "Simple PHP websites sites with Laravel's routing and Blade.",
     "keywords": ["routing", "blade", "laravel", "simple", "site"],
     "license": "MIT",
@@ -11,7 +11,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Phine\\": "framework/"
+            "Phin\\": "framework/"
         },
         "files": [
             "framework/helpers.php"
@@ -29,6 +29,6 @@
     "require-dev": {
     },
     "bin": [
-        "phine"
+        "phin"
     ]
 }

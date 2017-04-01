@@ -1,6 +1,6 @@
 <?php
 
-namespace Phine\Facades;
+namespace Phin\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

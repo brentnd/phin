@@ -1,6 +1,6 @@
 <?php
 
-namespace Phine\ServiceProviders;
+namespace Phin\ServiceProviders;
 
 use Illuminate\Support\ServiceProvider;
 

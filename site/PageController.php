@@ -2,8 +2,8 @@
 
 namespace Site;
 
-use Phine\Controller;
-use Phine\Facades\Faker;
+use Phin\Controller;
+use Phin\Facades\Faker;
 
 class PageController extends Controller
 {

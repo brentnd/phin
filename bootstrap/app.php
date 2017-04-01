@@ -1,6 +1,6 @@
 <?php
 
-$app = new Phine\Application(realpath(__DIR__.'/../'));
+$app = new Phin\Application(realpath(__DIR__.'/../'));
 
 $app['env'] = 'local';
 

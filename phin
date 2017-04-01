@@ -15,10 +15,10 @@ if (file_exists(__DIR__.'/vendor/autoload.php')) {
     }
 }
 
-$serveCommand = new Phine\Console\ServeCommand($app);
-$initCommand = new Phine\Console\InitCommand($app);
+$serveCommand = new Phin\Console\ServeCommand($app);
+$initCommand = new Phin\Console\InitCommand($app);
 
-$app = new Symfony\Component\Console\Application('Phine', '0.0.1');
+$app = new Symfony\Component\Console\Application('Phin', '0.0.1');
 $app->add($serveCommand);
 $app->add($initCommand);
 $app->run();

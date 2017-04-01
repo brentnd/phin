@@ -1,6 +1,6 @@
 <?php
 
-namespace Phine\Console;
+namespace Phin\Console;
 
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;

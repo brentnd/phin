@@ -1,4 +1,4 @@
-# Phine
+# Phin
 
 Simple setup which uses Illuminate components to make simple PHP sites.
 
@@ -27,8 +27,8 @@ Just a few easy steps to get up and running
 
 ```bash
 mkdir newsite && cd newsite
-composer require brentnd/phine
-./vendor/bin/phine init
+composer require brentnd/phin
+./vendor/bin/phin init
 npm install
 gulp
 ```
@@ -36,5 +36,5 @@ gulp
 Serve your site locally with PHP at `localhost:8000`
 
 ```bash
-./phine serve
+./phin serve
 ```

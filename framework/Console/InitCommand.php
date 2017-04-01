@@ -1,6 +1,6 @@
 <?php
 
-namespace Phine\Console;
+namespace Phin\Console;
 
 use Symfony\Component\Console\Input\InputArgument;
 use Illuminate\Filesystem\Filesystem;
@@ -19,7 +19,7 @@ class InitCommand extends Command
     protected function configure()
     {
         $this->setName('init')
-            ->setDescription('Initialize a new Phine project.')
+            ->setDescription('Initialize a new Phin project.')
             ->addArgument(
                 'name',
                 InputArgument::OPTIONAL,
@@ -33,7 +33,7 @@ class InitCommand extends Command
             $this->base .= '/' . $base;
         }
 
-        // Copy the Phine project into the new site directory
+        // Copy the Phin project into the new site directory
         $copyFrom = __DIR__ . '/../../';
         $this->files->copyDirectory($copyFrom . '/bootstrap/',   $this->base . '/bootstrap/');
         $this->files->copyDirectory($copyFrom . '/public/',      $this->base . '/public/');
@@ -41,6 +41,6 @@ class InitCommand extends Command
         $this->files->copyDirectory($copyFrom . '/site/',        $this->base . '/site/');
         $this->files->copy         ($copyFrom . '/gulpfile.js',  $this->base . '/gulpfile.js');
         $this->files->copy         ($copyFrom . '/package.json', $this->base . '/package.json');
-        $this->info("Phine initialized successfully!");
+        $this->info("Phin initialized successfully!");
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Phine\Console;
+namespace Phin\Console;
 
 use Symfony\Component\Console\Command\Command as SymfonyCommand;
 use Symfony\Component\Console\Input\InputInterface;

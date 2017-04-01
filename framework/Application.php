@@ -1,6 +1,6 @@
 <?php
 
-namespace Phine;
+namespace Phin;
 
 use Exception;
 use Illuminate\Http\Request;
@@ -13,9 +13,9 @@ use Illuminate\Routing\UrlGenerator;
 use Illuminate\Filesystem\FilesystemServiceProvider;
 use Illuminate\View\ViewServiceProvider;
 use Illuminate\Translation\TranslationServiceProvider;
-use Phine\ServiceProviders\ConfigServiceProvider;
-use Phine\ServiceProviders\FakerServiceProvider;
-use Phine\ServiceProviders\ExceptionHandlerServiceProvider;
+use Phin\ServiceProviders\ConfigServiceProvider;
+use Phin\ServiceProviders\FakerServiceProvider;
+use Phin\ServiceProviders\ExceptionHandlerServiceProvider;
 use Illuminate\Support\Facades\Route as RouteFacade;
 
 class Application extends Container
