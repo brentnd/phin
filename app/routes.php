@@ -11,4 +11,7 @@
 |
 */
 
-router()->get('/', 'App\PageController@home');
+router()->get('/', [
+	'as' => 'home',
+	'uses' => 'App\PageController@home'
+]);
