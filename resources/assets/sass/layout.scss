@@ -1,0 +1,32 @@
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.0/css/font-awesome.min.css);
+
+$web-font-path: "https://fonts.googleapis.com/css?family=Open+Sans" !default;
+$font-family-sans-serif: 'Open Sans', sans-serif;
+
+$icon-font-path:   "../fonts/";
+$icon-font-name:   "fontawesome-webfont";
+$icon-font-svg-id: "fontawesomeregular";
+
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    padding: 20px;
+    text-align: center;
+}
