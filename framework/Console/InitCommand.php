@@ -34,11 +34,17 @@ class InitCommand extends Command
         }
 
         // Copy the Phine project into the new site directory
-        $this->files->copyDirectory(__DIR__ . '/../../', $this->base);
-        // If cloned from master, .git comes along, let's not.
-        $this->files->deleteDirectory($this->base . '/.git', 0755);
+        $copyFrom = __DIR__ . '/../../';
+        $this->files->copyDirectory($copyFrom . '/framework/',  $this->base . '/framework/');
+        $this->files->copyDirectory($copyFrom . '/public/',     $this->base . '/public/');
+        $this->files->copyDirectory($copyFrom . '/resources/',  $this->base . '/resources/');
+        $this->files->copyDirectory($copyFrom . '/site/',       $this->base . '/site/');
+        $this->files->copy         ($copyFrom . '/.gitignore',  $this->base . '/.gitignore');
+        $this->files->copy         ($copyFrom . '/gulpfile.js', $this->base . '/gulpfile.js');
+        $this->files->copy         ($copyFrom . '/package.json',$this->base . '/package.json');
+        $this->files->copy         ($copyFrom . '/phine',       $this->base . '/phine');
         // Copy doesn't preserve phine executableness, put it back
         $this->files->chmod($this->base . '/phine', 0755);
-        $this->info("Phine {$this->base} initialized successfully!");
+        $this->info("Phine initialized successfully!");
     }
 }
