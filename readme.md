@@ -20,3 +20,21 @@ Simple setup which uses Illuminate components to make simple PHP sites.
 * SocialMedia provider?
 * Bootswatch theme selector?
 * Google Analytics
+
+## Installation
+
+Just a few easy steps to get up and running
+
+```bash
+mkdir newsite && cd newsite
+composer require brentnd/phine:dev-master
+./vendor/brentnd/phine/phine init
+npm install
+gulp
+```
+
+Serve your site locally with PHP at `localhost:8000`
+
+```bash
+./phine serve
+```
