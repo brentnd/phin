@@ -9,7 +9,7 @@ class FakerServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        $this->app->singleton('faker', function ($app) {
+        $this->app->bind('faker', function () {
             return FakerFactory::create();
         });
     }

@@ -15,8 +15,3 @@ Route::get('/', [
 	'as' => 'home',
 	'uses' => 'Site\PageController@home'
 ]);
-
-Route::get('/', [
-	'as' => 'json',
-	'uses' => 'Site\PageController@json'
-]);
