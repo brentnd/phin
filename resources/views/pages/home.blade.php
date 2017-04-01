@@ -8,7 +8,7 @@
         <div class="intro-text">
             <div class="intro-lead-in">Another Phine site..</div>
             <div class="intro-heading">See the rest</div>
-            <a href="#about" class="page-scroll btn btn-xl btn-primary">Learn More</a>
+            <a href="#services" class="page-scroll btn btn-xl btn-primary">Learn More</a>
         </div>
     </div>
 </header>
