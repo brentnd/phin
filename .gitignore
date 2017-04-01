@@ -3,3 +3,6 @@ node_modules
 composer.lock
 vendor
 *.map
+public/build
+public/css
+public/js

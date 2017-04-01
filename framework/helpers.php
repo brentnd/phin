@@ -60,3 +60,30 @@ if (! function_exists('storage_path')) {
         return app()->basePath().DIRECTORY_SEPARATOR.'framework'.DIRECTORY_SEPARATOR.'cache'.($path ? DIRECTORY_SEPARATOR.$path : $path);
     }
 }
+
+if (! function_exists('public_path')) {
+    function public_path($path = '')
+    {
+        return app()->basePath().DIRECTORY_SEPARATOR.'public'.($path ? DIRECTORY_SEPARATOR.$path : $path);
+    }
+}
+
+if (! function_exists('elixir')) {
+    function elixir($file, $buildDirectory = 'build')
+    {
+        static $manifest;
+        static $manifestPath;
+
+        if (is_null($manifest) || $manifestPath !== $buildDirectory) {
+            $manifest = json_decode(file_get_contents(public_path($buildDirectory.'/rev-manifest.json')), true);
+
+            $manifestPath = $buildDirectory;
+        }
+
+        if (isset($manifest[$file])) {
+            return '/'.trim($buildDirectory.'/'.$manifest[$file], '/');
+        }
+
+        throw new InvalidArgumentException("File {$file} not defined in asset manifest.");
+    }
+}
