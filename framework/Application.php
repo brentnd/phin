@@ -59,12 +59,12 @@ class Application extends Container
 
     public function storagePath()
     {
-        return $this->frameworkPath().DIRECTORY_SEPARATOR.'cache';
+        return $this->bootstrapPath().DIRECTORY_SEPARATOR.'cache';
     }
 
-    public function frameworkPath()
+    public function bootstrapPath()
     {
-        return $this->basePath.DIRECTORY_SEPARATOR.'framework';
+        return $this->basePath.DIRECTORY_SEPARATOR.'bootstrap';
     }
 
     public function publicPath()
@@ -79,7 +79,7 @@ class Application extends Container
         $this->instance('path.lang', $this->langPath());
         $this->instance('path.public', $this->publicPath());
         $this->instance('path.storage', $this->storagePath());
-        $this->instance('path.framework', $this->frameworkPath());
+        $this->instance('path.bootstrap', $this->bootstrapPath());
     }
 
     private function registerServiceProviders()
