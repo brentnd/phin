@@ -13,10 +13,15 @@
         "psr-4": {
             "Phine\\": "framework/",
             "App\\": "app/"
-        }
+        },
+        "files": [
+            "framework/helpers.php",
+            "vendor/illuminate/support/helpers.php"
+        ]
     },
     "require": {
-        "philo/laravel-blade": "3.*",
+        "illuminate/view": "^5.4",
+        "illuminate/config": "^5.4",
         "illuminate/routing": "^5.4",
         "illuminate/events": "^5.4",
         "illuminate/support": "^5.4"

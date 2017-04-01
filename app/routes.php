@@ -11,4 +11,4 @@
 |
 */
 
-$app['router']->get('/', 'App\PageController@home');
+router()->get('/', 'App\PageController@home');
