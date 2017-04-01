@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <div class="col-lg-12 text-center">
+        <div class="col-lg-12 text-center header">
             <h2>Services</h2>
             <h3>A list of our stuff</h3>
         </div>
