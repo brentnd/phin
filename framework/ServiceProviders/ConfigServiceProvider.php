@@ -14,6 +14,8 @@ class ConfigServiceProvider extends ServiceProvider
                         realpath(base_path('resources/views')),
                 ],
                 'view.compiled' => realpath(storage_path()),
+                'app.locale' => 'en',
+                'app.fallback_locale' => 'en',
             ];
         });
     }

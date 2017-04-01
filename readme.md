@@ -1,11 +1,12 @@
 # Phine
 
-Simple setup which uses Laravel components to make simple PHP sites.
+Simple setup which uses Illuminate components to make simple PHP sites.
 
 ## Components included
-* Laravel Routing
-* Laravel Support
-* Laravel Views (Blade Template Rendering)
+* Illuminate Routing
+* Illuminate Support
+* Illuminate Views (Blade Template Rendering)
+* Illuminate Translations
 * Custom Bootstrap Sass import
 * Jquery-easing for single-page sites
 * Updating Copyright date
@@ -19,5 +20,4 @@ Simple setup which uses Laravel components to make simple PHP sites.
 * Other common sections
 * SocialMedia provider?
 * Bootswatch theme selector?
-* Translations for commonly occurring text
 * Google Analytics

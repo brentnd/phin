@@ -30,7 +30,7 @@
                         <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                     </button>
                     <a class="navbar-brand page-scroll" href=" {{ route('home') }} ">
-                        Phine
+                        {{ trans('site.name') }}
                     </a>
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -59,7 +59,7 @@
 
         <footer class="footer navbar-inverse ">
             <div class="container">
-                <p class="text-muted">Copyright &copy; Phine. {{ date('Y') }}</p>
+                <p class="text-muted">Copyright &copy; {{ trans('site.name') }}. {{ date('Y') }}</p>
             </div>
         </footer>
 

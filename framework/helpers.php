@@ -50,7 +50,7 @@ if (! function_exists('base_path')) {
 if (! function_exists('site_path')) {
     function site_path($path = '')
     {
-        return app()->basePath().DIRECTORY_SEPARATOR.'site'.($path ? DIRECTORY_SEPARATOR.$path : $path);
+        return app('path').($path ? DIRECTORY_SEPARATOR.$path : $path);
     }
 }
 
@@ -64,14 +64,14 @@ if (! function_exists('resource_path')) {
 if (! function_exists('storage_path')) {
     function storage_path($path = '')
     {
-        return app()->basePath().DIRECTORY_SEPARATOR.'framework'.DIRECTORY_SEPARATOR.'cache'.($path ? DIRECTORY_SEPARATOR.$path : $path);
+        return app('path.storage').($path ? DIRECTORY_SEPARATOR.$path : $path);
     }
 }
 
 if (! function_exists('public_path')) {
     function public_path($path = '')
     {
-        return app()->basePath().DIRECTORY_SEPARATOR.'public'.($path ? DIRECTORY_SEPARATOR.$path : $path);
+        return app()->make('path.public').($path ? DIRECTORY_SEPARATOR.$path : $path);
     }
 }
 
@@ -92,5 +92,23 @@ if (! function_exists('elixir')) {
         }
 
         throw new InvalidArgumentException("File {$file} not defined in asset manifest.");
+    }
+}
+
+if (! function_exists('trans')) {
+    function trans($id = null, $parameters = [], $domain = 'messages', $locale = null)
+    {
+        if (is_null($id)) {
+            return app('translator');
+        }
+
+        return app('translator')->trans($id, $parameters, $domain, $locale);
+    }
+}
+
+if (! function_exists('trans_choice')) {
+    function trans_choice($id, $number, array $parameters = [], $domain = 'messages', $locale = null)
+    {
+        return app('translator')->transChoice($id, $number, $parameters, $domain, $locale);
     }
 }
