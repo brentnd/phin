@@ -1,6 +1,8 @@
 # Phin
 
-Simple setup which uses Illuminate components to make simple PHP sites.
+*View the [source of these docs](https://github.com/brentnd/phin/tree/master/docs).*
+
+Phine is a simple collection of PHP packages which ties together Illuminate components to make simple PHP sites.
 
 ## Components included
 * Illuminate Routing
@@ -23,7 +25,14 @@ Simple setup which uses Illuminate components to make simple PHP sites.
 
 ## Installation
 
-Just a few easy steps to get up and running
+Pull in package with composer
+`composer require brentnd/phin`
+
+### Commands
+
+#### Initialize
+
+To start a new site is just a few easy steps to get up and running
 
 ```bash
 mkdir newsite && cd newsite
@@ -33,8 +42,10 @@ npm install
 gulp
 ```
 
+#### Serve
+
 Serve your site locally with PHP at `localhost:8000`
 
 ```bash
-./phin serve
+./vendor/bin/phin serve
 ```

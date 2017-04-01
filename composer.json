@@ -11,10 +11,10 @@
     ],
     "autoload": {
         "psr-4": {
-            "Phin\\": "framework/"
+            "Phin\\": "src/"
         },
         "files": [
-            "framework/helpers.php"
+            "src/helpers.php"
         ]
     },
     "require": {
@@ -29,6 +29,6 @@
     "require-dev": {
     },
     "bin": [
-        "phin"
+        "bin/phin"
     ]
 }
