@@ -11,13 +11,15 @@
     ],
     "autoload": {
         "psr-4": {
+            "Phine\\": "framework/",
             "App\\": "app/"
         }
     },
     "require": {
-        "illuminate/routing": "5.3.*",
-        "illuminate/events": "5.3.*",
-        "illuminate/support": "5.3.*"
+        "philo/laravel-blade": "3.*",
+        "illuminate/routing": "^5.4",
+        "illuminate/events": "^5.4",
+        "illuminate/support": "^5.4"
     },
     "require-dev": {
     }
