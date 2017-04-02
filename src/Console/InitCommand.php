@@ -40,12 +40,7 @@ class InitCommand extends Command
 
         // Copy the Phin project into the new site directory
         $copyFrom = __DIR__ . '/../../';
-        $this->files->copyDirectory($copyFrom . '/bootstrap/',   $this->base . '/bootstrap/');
-        $this->files->copyDirectory($copyFrom . '/public/',      $this->base . '/public/');
-        $this->files->copyDirectory($copyFrom . '/resources/',   $this->base . '/resources/');
-        $this->files->copyDirectory($copyFrom . '/site/',        $this->base . '/site/');
-        $this->files->copy         ($copyFrom . '/gulpfile.js',  $this->base . '/gulpfile.js');
-        $this->files->copy         ($copyFrom . '/package.json', $this->base . '/package.json');
+        $this->files->copyDirectory($copyFrom . '/site/', $this->base);
 
         if (!file_exists($this->base . '/composer.json')) {
             $this->info("Installing brentnd/phin with composer in {$this->base}");
