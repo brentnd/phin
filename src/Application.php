@@ -50,7 +50,8 @@ class Application extends Container
 
     public function path()
     {
-        return $this->basePath.DIRECTORY_SEPARATOR.'site';
+        $directory = $this['config']->get('site.directory', 'site');
+        return $this->basePath.DIRECTORY_SEPARATOR.$directory;
     }
 
     public function storagePath()
@@ -70,7 +71,6 @@ class Application extends Container
 
     protected function bindPathsInContainer()
     {
-        $this->instance('path', $this->path());
         $this->instance('path.base', $this->basePath());
         $this->instance('path.public', $this->publicPath());
         $this->instance('path.storage', $this->storagePath());
@@ -80,7 +80,8 @@ class Application extends Container
     protected function loadRoutesFrom($path)
     {
         $router = $this['router'];
-        $router->group(['namespace' => 'Site'], function (Router $router) use ($path) {
+        $namespace = $this['config']->get('site.namespace', 'Site');
+        $router->group(['namespace' => $namespace], function (Router $router) use ($path) {
             require $path;
         });
     }
@@ -126,6 +127,8 @@ class Application extends Container
         Container::setInstance($this);
 
         $this->registerServiceProviders();
+        // Bind path after config is loaded
+        $this->instance('path', $this->path());
         $this->registerServiceAliases();
         $this->registerFacades();
         $this->loadRoutesFrom(site_path('routes.php'));

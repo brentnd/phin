@@ -81,9 +81,10 @@ to what Laravel or other frameworks would.
 * `resources/` - Top-level resource directory
 	* `assets/` - `js` and `sass` built by Elixir.
 	* `views/` - Blade templates and page files.
-* `site/` - Standard location for site's controllers and routes.
+* `site/` - Default location for site's controllers and routes.
 	* `routes.php` - Specify routes for the site (like Laravel)
-	* `config.php` - Site configuration values
+	* > To change the site directory or namespace, use configuration value `site.namespace` and `site.directory`.
+* `config.php` - Configuration file.
 
 ## Compiling Assets
 The default setup for Phin has placeholders for sass and js in the `resources/assets/` directory. To compile, minify, and version these assets, Phin uses Elixir. Recommend use node version lts/boron (v6.9.0)
