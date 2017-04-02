@@ -10,7 +10,7 @@ class ExceptionHandlerServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton(ExceptionHandler::class, function ($app) {
-            return new ExceptionHandler($app['env'] != "production");
+            return new ExceptionHandler($app['config']->get('debug', false));
         });
     }
 }

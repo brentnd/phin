@@ -6,7 +6,7 @@ Phin is a simple collection of PHP packages which ties together Illuminate compo
 * [Illuminate Routing](https://github.com/illuminate/routing)
 * [Illuminate Support](https://github.com/illuminate/support)
 * [Illuminate View](https://github.com/illuminate/view) - Blade Template Rendering
-* [Illuminate Translation](https://github.com/illuminate/translation)
+* [Illuminate Config](https://github.com/illuminate/config)
 * Custom [Bootstrap Sass](http://getbootstrap.com/css/#sass) import
 * [Jquery-easing](http://gsgd.co.uk/sandbox/jquery/easing/) for single-page sites
 * Updating Copyright date
@@ -80,9 +80,10 @@ to what Laravel or other frameworks would.
 	* Feel free to create other directories here as you need.
 * `resources/` - Top-level resource directory
 	* `assets/` - `js` and `sass` built by Elixir.
-	* `lang/` - Language files by locale.
 	* `views/` - Blade templates and page files.
 * `site/` - Standard location for site's controllers and routes.
+	* `routes.php` - Specify routes for the site (like Laravel)
+	* `config.php` - Site configuration values
 
 ## Compiling Assets
 The default setup for Phin has placeholders for sass and js in the `resources/assets/` directory. To compile, minify, and version these assets, Phin uses Elixir. Recommend use node version lts/boron (v6.9.0)

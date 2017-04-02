@@ -3,20 +3,16 @@
 namespace Phin\ServiceProviders;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Config\Repository;
 
 class ConfigServiceProvider extends ServiceProvider
 {
     public function register()
     {
         $this->app->singleton('config', function ($app) {
-            return [
-                'view.paths' => [
-                        realpath(base_path('resources/views')),
-                ],
-                'view.compiled' => realpath(storage_path()),
-                'app.locale' => 'en',
-                'app.fallback_locale' => 'en',
-            ];
+            $config = new Repository(require base_path('site/config.php'));
+            date_default_timezone_set($config['timezone']);
+            return $config;
         });
     }
 }

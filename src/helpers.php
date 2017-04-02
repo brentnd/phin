@@ -27,6 +27,19 @@ if (! function_exists('asset')) {
     }
 }
 
+if (! function_exists('config')) {
+    function config($key = null, $default = null)
+    {
+        if (is_null($key)) {
+            return app('config');
+        }
+        if (is_array($key)) {
+            return app('config')->set($key);
+        }
+        return app('config')->get($key, $default);
+    }
+}
+
 if (! function_exists('response')) {
     function response($content = '', $status = 200, array $headers = [])
     {
@@ -103,23 +116,5 @@ if (! function_exists('elixir')) {
         }
 
         throw new InvalidArgumentException("File {$file} not defined in asset manifest.");
-    }
-}
-
-if (! function_exists('trans')) {
-    function trans($id = null, $parameters = [], $domain = 'messages', $locale = null)
-    {
-        if (is_null($id)) {
-            return app('translator');
-        }
-
-        return app('translator')->trans($id, $parameters, $domain, $locale);
-    }
-}
-
-if (! function_exists('trans_choice')) {
-    function trans_choice($id, $number, array $parameters = [], $domain = 'messages', $locale = null)
-    {
-        return app('translator')->transChoice($id, $number, $parameters, $domain, $locale);
     }
 }

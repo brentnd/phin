@@ -12,7 +12,6 @@ use Illuminate\Routing\RoutingServiceProvider;
 use Illuminate\Routing\UrlGenerator;
 use Illuminate\Filesystem\FilesystemServiceProvider;
 use Illuminate\View\ViewServiceProvider;
-use Illuminate\Translation\TranslationServiceProvider;
 use Phin\ServiceProviders\ConfigServiceProvider;
 use Phin\ServiceProviders\FakerServiceProvider;
 use Phin\ServiceProviders\HttpServiceProvider;
@@ -86,11 +85,10 @@ class Application extends Container
 
     private function registerServiceProviders()
     {
+        with(new ConfigServiceProvider($this))->register();
         with(new EventServiceProvider($this))->register();
         with(new RoutingServiceProvider($this))->register();
         with(new FilesystemServiceProvider($this))->register();
-        with(new ConfigServiceProvider($this))->register();
-        with(new TranslationServiceProvider($this))->register();
         with(new ViewServiceProvider($this))->register();
         with(new FakerServiceProvider($this))->register();
         with(new HttpServiceProvider($this))->register();
@@ -116,5 +114,7 @@ class Application extends Container
 
         $this->registerServiceProviders();
         $this->registerFacades();
+
+        $this['env'] = $this['config']->get('env', 'production');
     }
 }

@@ -6,7 +6,7 @@
 <header>
     <div class="container">
         <div class="intro-text">
-            <div class="intro-lead-in">Another {{ trans('site.name') }} site..</div>
+            <div class="intro-lead-in">Another {{ config('site.name') }} site..</div>
             <div class="intro-heading">See the rest</div>
             <a href="#services" class="page-scroll btn btn-xl btn-primary">Learn More</a>
         </div>
