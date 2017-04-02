@@ -1,6 +1,6 @@
 <?php
 
-namespace Phin\ServiceProviders;
+namespace Phin\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Symfony\Component\Debug\ExceptionHandler;

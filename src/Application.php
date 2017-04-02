@@ -16,10 +16,10 @@ use Illuminate\Support\Facades\Route as RouteFacade;
 use Illuminate\View\ViewServiceProvider;
 use Symfony\Component\Debug\ExceptionHandler;
 
-use Phin\ServiceProviders\ConfigServiceProvider;
-use Phin\ServiceProviders\FakerServiceProvider;
-use Phin\ServiceProviders\HttpServiceProvider;
-use Phin\ServiceProviders\ExceptionHandlerServiceProvider;
+use Phin\Providers\ConfigServiceProvider;
+use Phin\Providers\FakerServiceProvider;
+use Phin\Providers\HttpServiceProvider;
+use Phin\Providers\ExceptionHandlerServiceProvider;
 
 class Application extends Container
 {
