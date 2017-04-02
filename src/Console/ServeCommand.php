@@ -7,11 +7,11 @@ use Symfony\Component\Console\Input\InputOption;
 
 class ServeCommand extends Command
 {
-    private $app;
+    private $base;
 
-    public function __construct($app)
+    public function __construct()
     {
-        $this->app = $app;
+        $this->base = getcwd();
         parent::__construct();
     }
 
@@ -39,7 +39,19 @@ class ServeCommand extends Command
     {
         $host = $this->input->getOption('host');
         $port = $this->input->getOption('port');
-        $this->info("Server started on http://{$host}:{$port}");
-        passthru("php -S {$host}:{$port} -t " . public_path());
+        if (!file_exists($this->base . '/bootstrap/app.php')) {
+            $this->error("Cannot find /bootstrap/app.php current directory.\nThis is required to run Phin site.");
+            return;
+        }
+        if (!file_exists($this->base . '/public/index.php')) {
+            $this->error("Cannot find /public/index.php current directory.\nThis is required to run Phin site.");
+            return;
+        }
+        if (!file_exists($this->base . '/vendor')) {
+            $this->error("Cannot find /vendor in current directory.\nThis is required to run Phin site.");
+            return;
+        }
+        $this->info("Server starting on http://{$host}:{$port}");
+        passthru("php -S {$host}:{$port} -t " . $this->base . '/public/');
     }
 }

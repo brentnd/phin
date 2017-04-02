@@ -8,10 +8,11 @@ use Illuminate\Filesystem\Filesystem;
 class InitCommand extends Command
 {
     private $files;
+    private $base;
 
-    public function __construct($app)
+    public function __construct()
     {
-        $this->files = $app['files'];
+        $this->files = new Filesystem;
         $this->base = getcwd();
         parent::__construct();
     }
@@ -41,6 +42,12 @@ class InitCommand extends Command
         $this->files->copyDirectory($copyFrom . '/site/',        $this->base . '/site/');
         $this->files->copy         ($copyFrom . '/gulpfile.js',  $this->base . '/gulpfile.js');
         $this->files->copy         ($copyFrom . '/package.json', $this->base . '/package.json');
+
+        if (!file_exists($this->base . '/composer.json')) {
+            $this->info("Installing brentnd/phin with composer in {$this->base}");
+            chdir($this->base);
+            passthru('composer require brentnd/phin');
+        }
         $this->info("Phin initialized successfully!");
     }
 }

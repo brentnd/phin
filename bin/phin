@@ -2,23 +2,34 @@
 
 <?php
 
-if (file_exists(__DIR__.'/../vendor/autoload.php')) {
-    require __DIR__ . '/../vendor/autoload.php';
-    $app = require_once __DIR__.'/../bootstrap/app.php';
+$cwd = getcwd();
+$autoloadFile = "";
+
+if (file_exists($cwd . '/bootstrap/app.php')) {
+	$isProjectDirectory = true;
 } else {
-    require __DIR__.'/../../../autoload.php';
-    if (file_exists(__DIR__.'/../../../../bootstrap/app.php')) {
-        $app = require_once __DIR__.'/../../../../bootstrap/app.php';
-    } else {
-        // Use $app from vendor current location for first run (init)
-        $app = require_once __DIR__.'/../bootstrap/app.php';
-    }
+	$isProjectDirectory = false;
 }
 
-$serveCommand = new Phin\Console\ServeCommand($app);
-$initCommand = new Phin\Console\InitCommand($app);
+if (file_exists($cwd . '/vendor/autoload.php')) {
+	// Current directory has /vendor (most likely a project)
+	$autoloadFile = $cwd . '/vendor/autoload.php';
+} else if (file_exists(__DIR__ . '/../../../autoload.php')) {
+	// Running from inside vendor directory
+	$autoloadFile = __DIR__ . '/../../../autoload.php';
+} else {
+	echo "Cannot find autoload.php anywhere! Exiting.";
+	return;
+}
 
-$app = new Symfony\Component\Console\Application('Phin', '0.0.1');
-$app->add($serveCommand);
-$app->add($initCommand);
-$app->run();
+require $autoloadFile;
+$cmd = new Symfony\Component\Console\Application('Phin', '0.0.1');
+
+if ($isProjectDirectory) {
+	$serveCommand = new Phin\Console\ServeCommand();
+	$cmd->add($serveCommand);
+} else {
+	$initCommand = new Phin\Console\InitCommand();
+	$cmd->add($initCommand);
+}
+$cmd->run();
