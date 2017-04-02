@@ -3,21 +3,23 @@
 namespace Phin;
 
 use Exception;
-use Illuminate\Http\Request;
-use Symfony\Component\Debug\ExceptionHandler;
 use Illuminate\Container\Container;
-use Illuminate\Support\Facades\Facade;
+use Illuminate\Contracts\View\Factory as ViewFactoryContract;
+use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Events\EventServiceProvider;
-use Illuminate\Routing\RoutingServiceProvider;
-use Illuminate\Routing\UrlGenerator;
 use Illuminate\Filesystem\FilesystemServiceProvider;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Router;
+use Illuminate\Routing\RoutingServiceProvider;
+use Illuminate\Support\Facades\Facade;
+use Illuminate\Support\Facades\Route as RouteFacade;
 use Illuminate\View\ViewServiceProvider;
+use Symfony\Component\Debug\ExceptionHandler;
+
 use Phin\ServiceProviders\ConfigServiceProvider;
 use Phin\ServiceProviders\FakerServiceProvider;
 use Phin\ServiceProviders\HttpServiceProvider;
 use Phin\ServiceProviders\ExceptionHandlerServiceProvider;
-use Illuminate\Contracts\View\Factory as ViewFactoryContract;
-use Illuminate\Support\Facades\Route as RouteFacade;
 
 class Application extends Container
 {
@@ -37,9 +39,7 @@ class Application extends Container
     public function setBasePath($basePath)
     {
         $this->basePath = rtrim($basePath, '\/');
-
         $this->bindPathsInContainer();
-
         return $this;
     }
 
@@ -51,11 +51,6 @@ class Application extends Container
     public function path()
     {
         return $this->basePath.DIRECTORY_SEPARATOR.'site';
-    }
-
-    public function langPath()
-    {
-        return $this->basePath.DIRECTORY_SEPARATOR.'resources'.DIRECTORY_SEPARATOR.'lang';
     }
 
     public function storagePath()
@@ -77,10 +72,17 @@ class Application extends Container
     {
         $this->instance('path', $this->path());
         $this->instance('path.base', $this->basePath());
-        $this->instance('path.lang', $this->langPath());
         $this->instance('path.public', $this->publicPath());
         $this->instance('path.storage', $this->storagePath());
         $this->instance('path.bootstrap', $this->bootstrapPath());
+    }
+
+    protected function loadRoutesFrom($path)
+    {
+        $router = $this['router'];
+        $router->group(['namespace' => 'Site'], function (Router $router) use ($path) {
+            require $path;
+        });
     }
 
     private function registerServiceProviders()
@@ -93,9 +95,15 @@ class Application extends Container
         with(new FakerServiceProvider($this))->register();
         with(new HttpServiceProvider($this))->register();
         with(new ExceptionHandlerServiceProvider($this))->register();
-        // Hack, also register 'view' as ViewFactoryContract for responseFactory
+    }
+
+    private function registerServiceAliases()
+    {
         $this->singleton(ViewFactoryContract::class, function ($this) {
             return $this['view'];
+        });
+        $this->singleton(Dispatcher::class, function ($this) {
+            return $this['events'];
         });
     }
 
@@ -103,6 +111,11 @@ class Application extends Container
     {
         Facade::setFacadeApplication($this);
         class_alias(RouteFacade::class, 'Route');
+    }
+
+    private function setEnv()
+    {
+        $this['env'] = $this['config']->get('env', 'production');
     }
 
     public function __construct($basePath = null)
@@ -113,8 +126,9 @@ class Application extends Container
         Container::setInstance($this);
 
         $this->registerServiceProviders();
+        $this->registerServiceAliases();
         $this->registerFacades();
-
-        $this['env'] = $this['config']->get('env', 'production');
+        $this->loadRoutesFrom(site_path('routes.php'));
+        $this->setEnv();
     }
 }

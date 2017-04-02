@@ -2,7 +2,7 @@
 
 return [
     'env' => 'production',
-    'debug' => false,
+    'debug' => true,
     'url' => 'http://localhost',
     'timezone' => 'America/New_York',
     'site' => [

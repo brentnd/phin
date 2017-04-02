@@ -13,5 +13,5 @@
 
 Route::get('/', [
 	'as' => 'home',
-	'uses' => 'Site\PageController@home'
+	'uses' => 'PageController@home'
 ]);
