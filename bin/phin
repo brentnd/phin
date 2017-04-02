@@ -2,34 +2,9 @@
 
 <?php
 
-$cwd = getcwd();
-$autoloadFile = "";
-
-if (file_exists($cwd . '/bootstrap/app.php')) {
-	$isProjectDirectory = true;
-} else {
-	$isProjectDirectory = false;
-}
-
-if (file_exists($cwd . '/vendor/autoload.php')) {
-	// Current directory has /vendor (most likely a project)
-	$autoloadFile = $cwd . '/vendor/autoload.php';
-} else if (file_exists(__DIR__ . '/../../../autoload.php')) {
-	// Running from inside vendor directory
-	$autoloadFile = __DIR__ . '/../../../autoload.php';
-} else {
-	echo "Cannot find autoload.php anywhere! Exiting.";
-	return;
-}
-
-require $autoloadFile;
+// Assumed to be running from vendor/brentnd/phin/bin/
+require __DIR__ . '/../../../autoload.php';
 $cmd = new Symfony\Component\Console\Application('Phin', '0.0.1');
-
-if ($isProjectDirectory) {
-	$serveCommand = new Phin\Console\ServeCommand();
-	$cmd->add($serveCommand);
-} else {
-	$initCommand = new Phin\Console\InitCommand();
-	$cmd->add($initCommand);
-}
+$cmd->add(new Phin\Console\ServeCommand());
+$cmd->add(new Phin\Console\InitCommand());
 $cmd->run();

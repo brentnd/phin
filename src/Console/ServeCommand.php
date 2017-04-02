@@ -39,19 +39,19 @@ class ServeCommand extends Command
     {
         $host = $this->input->getOption('host');
         $port = $this->input->getOption('port');
-        if (!file_exists($this->base . '/bootstrap/app.php')) {
-            $this->error("Cannot find /bootstrap/app.php current directory.\nThis is required to run Phin site.");
+        if (!file_exists($this->base . '/bootstrap/phin.php')) {
+            $this->error("Cannot find /bootstrap/phin.php current directory.\nThis is required to serve a Phin site.");
             return;
         }
         if (!file_exists($this->base . '/public/index.php')) {
-            $this->error("Cannot find /public/index.php current directory.\nThis is required to run Phin site.");
+            $this->error("Cannot find /public/index.php current directory.\nThis is required to serve a Phin site.");
             return;
         }
         if (!file_exists($this->base . '/vendor')) {
-            $this->error("Cannot find /vendor in current directory.\nThis is required to run Phin site.");
+            $this->error("Cannot find /vendor in current directory.\nThis is required to serve a Phin site.");
             return;
         }
-        $this->info("Server starting on http://{$host}:{$port}");
+        $this->info("Phin server starting on http://{$host}:{$port}");
         passthru("php -S {$host}:{$port} -t " . $this->base . '/public/');
     }
 }
