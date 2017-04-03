@@ -5,25 +5,9 @@
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
-}
-
-// Font Mixins
-
-@mixin serif-font {
-    font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-
-@mixin script-font {
-    font-family: "Kaushan Script", "Helvetica Neue", Helvetica, Arial, cursive;
-}
-
-@mixin body-font {
-    font-family: "Roboto Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-
-@mixin heading-font {
-    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    text-transform: uppercase;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
 }
 
 @mixin auto-clear($sz) {
@@ -33,4 +17,3 @@
     .auto-clear .col-#{$sz}-4:nth-child(3n+1){clear:left;}
     .auto-clear .col-#{$sz}-6:nth-child(odd){clear:left;}  
 }
-

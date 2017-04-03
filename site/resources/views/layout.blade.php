@@ -8,10 +8,6 @@
 
         <!-- Custom Fonts -->
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-        <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
-        <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-        <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
         <!-- Styles -->
         <link href="{{ elixir('css/site.css') }}" rel="stylesheet">
         @yield('styles')
@@ -22,18 +18,18 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
     </head>
-    <body>
+    <body id="page-top">
         <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header page-scroll">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
                         <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                     </button>
-                    <a class="navbar-brand page-scroll" href=" {{ route('home') }} ">
+                    <a class="navbar-brand page-scroll" href="#page-top">
                         {{ config('site.name') }}
                     </a>
                 </div>
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <div class="collapse navbar-collapse" id="navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li class="hidden">
                             <a href="#page-top"></a>
@@ -57,9 +53,9 @@
 
         @yield('body')
 
-        <footer class="footer navbar-inverse ">
+        <footer class="navbar-inverse">
             <div class="container">
-                <p class="text-muted">Copyright &copy; {{ config('site.name') }}. {{ date('Y') }}</p>
+                <p>Copyright &copy; {{ config('site.name') }}. {{ date('Y') }}</p>
             </div>
         </footer>
 

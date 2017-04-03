@@ -15,15 +15,9 @@ body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
     overflow-x: hidden;
-    @include body-font;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    @include heading-font;
-    font-weight: 700;
-}
-
-.footer {
+footer {
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -40,28 +34,22 @@ h1, h2, h3, h4, h5, h6 {
 
 header {
     background-image: url('/img/header-bg.jpg');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center center;
     @include background-cover;
     text-align: center;
-    color: white;
     .intro-text {
         padding-top: 100px;
         padding-bottom: 50px;
-        .intro-lead-in {
-            @include serif-font;
-            font-style: italic;
-            font-size: 22px;
-            line-height: 22px;
-            margin-bottom: 25px;
+        h1, h2, h3 {
+            color: $gray-lighter;
         }
-        .intro-heading {
-            @include heading-font;
-            font-weight: 700;
-            font-size: 50px;
-            line-height: 50px;
-            margin-bottom: 25px;
+        h3 {
+            font-style: italic;
+            font-size: 1.8em;
+        }
+        h1 {
+            font-size: 4em;
+            font-weight: bold;
+            text-transform: uppercase;
         }
     }
 }
@@ -71,19 +59,11 @@ header {
         .intro-text {
             padding-top: 300px;
             padding-bottom: 200px;
-            .intro-lead-in {
-                @include serif-font;
-                font-style: italic;
-                font-size: 40px;
-                line-height: 40px;
-                margin-bottom: 25px;
+            h3 {
+                font-size: 2.2em;
             }
-            .intro-heading {
-                @include heading-font;
-                font-weight: 700;
-                font-size: 75px;
-                line-height: 75px;
-                margin-bottom: 50px;
+            h1 {
+                font-size: 5.5em;
             }
         }
     }
@@ -115,7 +95,6 @@ section {
         }
         h3 {
             font-size: 1.2em;
-            @include serif-font;
             text-transform: none;
             font-style: italic;
             font-weight: normal;
