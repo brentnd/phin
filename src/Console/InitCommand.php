@@ -58,9 +58,7 @@ class InitCommand extends Command
             $this->files->makeDirectory($this->base . '/resources/views/');
             $this->files->makeDirectory($this->base . '/site/');
             $this->files->copyDirectory($copyFrom . '/site/bootstrap/', $this->base . '/bootstrap/');
-            $this->files->copyDirectory($copyFrom . '/site/bootstrap/', $this->base . '/bootstrap/');
             $this->files->copy($copyFrom . '/site/public/.htaccess', $this->base . '/public/.htaccess');
-            $this->files->copy($copyFrom . '/site/public/index.php', $this->base . '/public/index.php');
             $this->files->copy($copyFrom . '/site/public/index.php', $this->base . '/public/index.php');
             $this->files->copy($copyFrom . '/site/site/routes.php',  $this->base . '/site/routes.php');
             $this->files->copy($copyFrom . '/site/config.php',       $this->base . '/config.php');

@@ -7,4 +7,5 @@ require __DIR__ . '/../../../autoload.php';
 $cmd = new Symfony\Component\Console\Application('Phin', '0.0.1');
 $cmd->add(new Phin\Console\ServeCommand());
 $cmd->add(new Phin\Console\InitCommand());
+$cmd->add(new Phin\Console\UpgradeCommand());
 $cmd->run();
