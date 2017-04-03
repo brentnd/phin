@@ -14,4 +14,8 @@ return [
         ],
         'compiled' => realpath(storage_path()),
     ],
+    'analytics' => [
+        // Add Google Analytics Tracking ID here to enable (only on production)
+        'trackingId' => '',
+    ],
 ];

@@ -14,12 +14,12 @@ Phin is a simple collection of PHP packages which ties together Illuminate compo
 * Faker for generating sample content
 * [FontAwesome](http://fontawesome.io/) icon set
 * Http Client ([guzzle](https://github.com/guzzle/guzzle))
+* Google Analytics
 
 ## TODO
 * Deployment control
 * Other common sections
 * Bootswatch theme selector?
-* Google Analytics
 * Clean install (no controllers/views?)
 
 ## Installation

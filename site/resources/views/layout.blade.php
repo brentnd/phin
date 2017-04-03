@@ -68,6 +68,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
         <script src="{{ elixir('js/site.js') }}"></script>
+        @include('partials.analytics')
         @yield('scripts')
     </body>
 </html>
