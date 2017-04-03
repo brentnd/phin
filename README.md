@@ -20,7 +20,6 @@ Phin is a simple collection of PHP packages which ties together Illuminate compo
 * Deployment control
 * Other common sections
 * Bootswatch theme selector?
-* Clean install (no controllers/views?)
 
 ## Installation
 
