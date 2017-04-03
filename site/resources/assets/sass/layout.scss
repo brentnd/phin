@@ -1,5 +1,8 @@
-@import "variables.scss";
-@import "mixins.scss";
+
+@import "theme/mixins";
+@import "theme/variables";
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "theme/bootswatch";
 
 /* Sticky footer styles
 -------------------------------------------------- */

@@ -15,11 +15,11 @@ Phin is a simple collection of PHP packages which ties together Illuminate compo
 * [FontAwesome](http://fontawesome.io/) icon set
 * Http Client ([guzzle](https://github.com/guzzle/guzzle))
 * Google Analytics
+* [Bootswatch](https://bootswatch.com/) theme installer
 
 ## TODO
 * Deployment control
 * Other common sections
-* Bootswatch theme selector?
 
 ## Installation
 
@@ -82,7 +82,7 @@ to what Laravel or other frameworks would.
 	* `views/` - Blade templates and page files.
 * `site/` - Default location for site's controllers and routes.
 	* `routes.php` - Specify routes for the site (like Laravel)
-	* > To change the site directory or namespace, use configuration value `site.namespace` and `site.directory`.
+	> To change the site directory or namespace, use configuration value `site.namespace` and `site.directory`.
 * `config.php` - Configuration file.
 
 ## Compiling Assets
@@ -146,3 +146,15 @@ This process will get the latest:
 	* `.htaccess`
 
 These files shouldn't change often so this isn't required with every update.
+
+
+## Bootswatch Themes
+The basic site comes stock with Bootstrap. To add some alternate styling as a starting point for the Phin site, use the `theme` command.
+
+Switch to Bootswatch's Cosmo theme:
+```
+$ phin theme cosmo
+```
+> The default sass setup is ready for themes to be installed and doesn't require modifying any scss files or your gulpfile.
+
+Run `gulp` to compile the new assets and the site will have the new theme.
