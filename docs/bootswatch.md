@@ -1,6 +1,5 @@
 ---
 layout: default
-section: documentation_content
 ---
 
 ## Bootswatch Themes
