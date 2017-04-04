@@ -46,7 +46,7 @@ class InitCommand extends Command
 
         // Copy the Phin project into the new site directory
         $copyFrom = __DIR__ . '/../../';
-        if ($this->input->hasOption('bare')) {
+        if ($this->input->getOption('bare')) {
             $this->info('Skipping resources and controllers');
             $this->files->makeDirectory($this->base);
             $this->files->makeDirectory($this->base . '/public/');
