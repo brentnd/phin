@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Phin</title>
+
+        <link rel="stylesheet" href="/phin/css/main.css">
+        <link href='https://fonts.googleapis.com/css?family=Lato:100,300,300italic,400,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
+        <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body class="border-t-3 border-primary full-height flex-col">
+        <div class="flex-fit">
+            <nav class="navbar navbar-brand">
+                <div class="container">
+                    <div class="navbar-content">
+                        <div>
+                            <a class="link-plain text-xxl flex-y-center" href="/phin/">
+                                <strong>Phin <i class="fa fa-caret-right"></i></strong>
+                            </a>
+                            <span class="pull-right">
+                                A simple setup which uses Laravel components to make simple PHP sites.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="container m-xs-b-6">
+                <div class="row">
+                    <div class="col-md-3 m-xs-b-6">
+                        <nav class="nav-list">
+                            <a class="nav-list-item" href="/phin/"><i class="fa fa-list-ul"></i> &nbsp;&nbsp;Overview</a>
+                            <a class="nav-list-item" href="/phin/installation.html"><i class="fa fa-cog"></i> &nbsp;&nbsp;Installation</a>
+                            <a class="nav-list-item" href="/phin/setup.html"><i class="fa fa-refresh"></i> &nbsp;&nbsp;Site Setup &amp; Initialization</a>
+                            <a class="nav-list-item" href="/phin/directory_structure.html"><i class="fa fa-folder"></i> &nbsp;&nbsp;Directory Structure</a>
+                            <a class="nav-list-item" href="/phin/assets.html"><i class="fa fa-file-image-o"></i> &nbsp;&nbsp;Compiling Assets</a>
+                            <a class="nav-list-item" href="/phin/previewing.html"><i class="fa fa-eye"></i> &nbsp;&nbsp;Previewing</a>
+                            <a class="nav-list-item" href="/phin/features.html"><i class="fa fa-star"></i> &nbsp;&nbsp;Features</a>
+                            <a class="nav-list-item" href="/phin/deploying.html"><i class="fa fa-rocket"></i> &nbsp;&nbsp;Deploying</a>
+                            <a class="nav-list-item" href="/phin/upgrading.html"><i class="fa fa-level-up"></i> &nbsp;&nbsp;Upgrading</a>
+                            <a class="nav-list-item" href="/phin/bootswatch.html"><i class="fa fa-paint-brush"></i> &nbsp;&nbsp;Bootswatch Themes</a>
+                            <a class="nav-list-item" href="http://github.com/brentnd/phin"><i class="fa fa-github"></i> &nbsp;&nbsp;Source</a>
+                        </nav>
+                    </div>
+                    <div class="col-md-9 documentation-page">
+                        {{documentation_content}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="bg-dark text-center p-xs-y-6 p-xs-x-4 text-light-muted text-sm">
+            <p>By <a href="http://brentdimmig.com/" class="link-light-muted">Brent</a>.</p>
+        </footer>
+    </body>
+</html>
