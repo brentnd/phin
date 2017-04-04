@@ -17,9 +17,16 @@ Phin is a simple collection of PHP packages which ties together Illuminate compo
 * Google Analytics
 * [Bootswatch](https://bootswatch.com/) theme installer
 
-## TODO
-* Deployment control
+## Future Ideas
+* Deployment control commands
 * Other common sections
+	* Pricing
+	* About us (team page?)
+	* Contact form (Laravel Collective?)
+	* Portfolio/gallery
+* Github pages as separate branch (break up readme)
+* Custom error pages
+* Illuminate/mailer support
 
 ## Installation
 
