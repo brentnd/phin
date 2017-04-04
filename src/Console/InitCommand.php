@@ -9,7 +9,6 @@ use Illuminate\Filesystem\Filesystem;
 class InitCommand extends Command
 {
     private $files;
-    private $base;
 
     public function __construct()
     {
@@ -40,7 +39,7 @@ class InitCommand extends Command
         if ($base = $this->input->getArgument('name')) {
             $this->base .= '/' . $base;
         }
-        if (file_exists($this->base . '/bootstrap/phin.php')) {
+        if ($this->is_valid_site()) {
             $this->error("Cannot init Phin, already initialized as Phin site.");
             return;
         }

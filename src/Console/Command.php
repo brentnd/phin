@@ -8,6 +8,14 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 abstract class Command extends SymfonyCommand
 {
+    protected $base;
+
+    public function __construct()
+    {
+        $this->base = getcwd();
+        parent::__construct();
+    }
+
     public function execute(InputInterface $input, OutputInterface $output)
     {
         $this->input = $input;
@@ -28,6 +36,12 @@ abstract class Command extends SymfonyCommand
     protected function comment($string)
     {
         $this->output->writeln("<comment>{$string}</comment>");
+    }
+
+    protected function is_valid_site()
+    {
+        // Probably ambiguous with other frameworks which also have public/index.php.
+        return file_exists($this->base . '/public/index.php');
     }
 
     abstract protected function fire();

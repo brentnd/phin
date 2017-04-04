@@ -12,7 +12,7 @@ return [
         'paths' => [
             realpath(base_path('resources/views')),
         ],
-        'compiled' => realpath(storage_path()),
+        'compiled' => realpath(base_path('resources/compiled')),
     ],
     'analytics' => [
         // Add Google Analytics Tracking ID here to enable (only on production)

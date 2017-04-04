@@ -79,8 +79,9 @@ This will setup your current directory as a Phin site.
 ## Directory structure
 By default, Phin gives you a standard directory structure similar
 to what Laravel or other frameworks would.
-* `bootstrap/` - Main loader for the Phin application. Used by index.php and `phin` command
-* `public/` - Base directory where site is served from. Contains `index.php` which loads application and handles routing. `.htaccess` is setup to use PHP 5.6 handler, produce clean urls, and setup asset caching (satisfies Google Speed Test analysis).
+* `public/` - Base directory where site is served from.
+	* `index.php` - Loads application and handles routing.
+	* `.htaccess` - Setup to use PHP 5.6 handler, produce clean urls, and setup asset caching (satisfies Google Speed Test analysis).
 	* `img/` - Storage for images.
 	* `css/`,`js/`,`build/` - Output files from Elixir go here. They are ignore by git by default.
 	* Feel free to create other directories here as you need.
@@ -147,7 +148,6 @@ $ phin upgrade
 ```
 
 This process will get the latest:
-* `bootstrap/`
 * `public/`
 	* `index.php`
 	* `.htaccess`

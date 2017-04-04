@@ -54,16 +54,6 @@ class Application extends Container
         return $this->basePath.DIRECTORY_SEPARATOR.$directory;
     }
 
-    public function storagePath()
-    {
-        return $this->bootstrapPath().DIRECTORY_SEPARATOR.'cache';
-    }
-
-    public function bootstrapPath()
-    {
-        return $this->basePath.DIRECTORY_SEPARATOR.'bootstrap';
-    }
-
     public function publicPath()
     {
         return $this->basePath.DIRECTORY_SEPARATOR.'public';
@@ -73,8 +63,6 @@ class Application extends Container
     {
         $this->instance('path.base', $this->basePath());
         $this->instance('path.public', $this->publicPath());
-        $this->instance('path.storage', $this->storagePath());
-        $this->instance('path.bootstrap', $this->bootstrapPath());
     }
 
     protected function loadRoutesFrom($path)

@@ -78,20 +78,6 @@ if (! function_exists('site_path')) {
     }
 }
 
-if (! function_exists('resource_path')) {
-    function resource_path($path = '')
-    {
-        return app()->basePath().DIRECTORY_SEPARATOR.'resources'.($path ? DIRECTORY_SEPARATOR.$path : $path);
-    }
-}
-
-if (! function_exists('storage_path')) {
-    function storage_path($path = '')
-    {
-        return app('path.storage').($path ? DIRECTORY_SEPARATOR.$path : $path);
-    }
-}
-
 if (! function_exists('public_path')) {
     function public_path($path = '')
     {

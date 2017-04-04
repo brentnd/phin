@@ -10,13 +10,11 @@ use GuzzleHttp\Client;
 class ThemeCommand extends Command
 {
     private $files;
-    private $base;
     private $client;
 
     public function __construct()
     {
         $this->files = new Filesystem;
-        $this->base = getcwd();
         $this->client = new Client();
         parent::__construct();
     }
@@ -35,7 +33,7 @@ class ThemeCommand extends Command
     protected function fire()
     {
         $name = strtolower($this->input->getArgument('theme'));
-        if (!file_exists($this->base . '/bootstrap/phin.php')) {
+        if (!$this->is_valid_site()) {
             $this->error("Cannot add theme to Phin, not initialized as Phin site.");
             return;
         }

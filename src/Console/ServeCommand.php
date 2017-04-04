@@ -7,14 +7,6 @@ use Symfony\Component\Console\Input\InputOption;
 
 class ServeCommand extends Command
 {
-    private $base;
-
-    public function __construct()
-    {
-        $this->base = getcwd();
-        parent::__construct();
-    }
-
     protected function configure()
     {
         $this->setName('serve')
@@ -39,16 +31,8 @@ class ServeCommand extends Command
     {
         $host = $this->input->getOption('host');
         $port = $this->input->getOption('port');
-        if (!file_exists($this->base . '/bootstrap/phin.php')) {
-            $this->error("Cannot find bootstrap/phin.php.\nThis is required to serve a Phin site.");
-            return;
-        }
-        if (!file_exists($this->base . '/public/index.php')) {
-            $this->error("Cannot find public/index.php.\nThis is required to serve a Phin site.");
-            return;
-        }
-        if (!file_exists($this->base . '/vendor/autoload.php')) {
-            $this->error("Cannot find vendor/autoload.php.\nThis is required to serve a Phin site.");
+        if (!$this->is_valid_site()) {
+            $this->error("This is not a Phin site. Use `phin init` to create a new site.");
             return;
         }
         $this->info("Phin server starting on http://{$host}:{$port}");
