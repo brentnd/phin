@@ -1,12 +1,12 @@
 <?php
 
 return [
-    'env' => 'production',
-    'debug' => true,
-    'url' => 'http://localhost',
+    'env' => env('SITE_ENV', 'production'),
+    'debug' => env('SITE_DEBUG', false),
+    'url' => env('SITE_URL', 'http://localhost'),
     'timezone' => 'America/New_York',
     'site' => [
-        'name' => 'Phin',
+        'name' => env('SITE_NAME'),
     ],
     'view' => [
         'paths' => [
@@ -15,7 +15,6 @@ return [
         'compiled' => realpath(base_path('resources/compiled')),
     ],
     'analytics' => [
-        // Add Google Analytics Tracking ID here to enable (only on production)
-        'trackingId' => '',
+        'trackingId' => env('ANALYTICS_ID'),
     ],
 ];

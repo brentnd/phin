@@ -40,6 +40,36 @@ if (! function_exists('config')) {
     }
 }
 
+if (! function_exists('env')) {
+    function env($key, $default = null)
+    {
+        $value = getenv($key);
+        if ($value === false) {
+            return value($default);
+        }
+        switch (strtolower($value)) {
+            case 'true':
+                return true;
+            case 'false':
+                return false;
+            case 'null':
+                return;
+        }
+        return $value;
+    }
+}
+
+if (! function_exists('environment')) {
+    function environment($check = null)
+    {
+        if ($check) {
+            return app('env') === $check;
+        } else {
+            return app('env');
+        }
+    }
+}
+
 if (! function_exists('response')) {
     function response($content = '', $status = 200, array $headers = [])
     {

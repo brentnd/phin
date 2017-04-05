@@ -25,7 +25,8 @@
         "illuminate/config": "^5.4",
         "fzaninotto/faker": "^1.6",
         "symfony/console": "^2.5|^3.0",
-        "guzzlehttp/guzzle": "^6.2"
+        "guzzlehttp/guzzle": "^6.2",
+        "vlucas/phpdotenv": "^2.4"
     },
     "require-dev": {
     },

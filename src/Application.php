@@ -3,6 +3,7 @@
 namespace Phin;
 
 use Exception;
+use Dotenv\Dotenv;
 use Illuminate\Container\Container;
 use Illuminate\Contracts\View\Factory as ViewFactoryContract;
 use Illuminate\Contracts\Events\Dispatcher;
@@ -74,6 +75,14 @@ class Application extends Container
         });
     }
 
+    private function loadEnvironment()
+    {
+        if (file_exists($this->basePath() . '/.env')) {
+            $dotenv = new Dotenv($this->basePath());
+            $dotenv->load();
+        }
+    }
+
     private function registerServiceProviders()
     {
         with(new ConfigServiceProvider($this))->register();
@@ -114,6 +123,7 @@ class Application extends Container
         }
         Container::setInstance($this);
 
+        $this->loadEnvironment();
         $this->registerServiceProviders();
         // Bind path after config is loaded
         $this->instance('path', $this->path());
