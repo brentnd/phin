@@ -5,22 +5,11 @@ namespace Phin;
 use Exception;
 use Dotenv\Dotenv;
 use Illuminate\Container\Container;
-use Illuminate\Contracts\View\Factory as ViewFactoryContract;
-use Illuminate\Contracts\Events\Dispatcher;
-use Illuminate\Events\EventServiceProvider;
-use Illuminate\Filesystem\FilesystemServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Router;
-use Illuminate\Routing\RoutingServiceProvider;
 use Illuminate\Support\Facades\Facade;
-use Illuminate\Support\Facades\Route as RouteFacade;
-use Illuminate\View\ViewServiceProvider;
-use Symfony\Component\Debug\ExceptionHandler;
-
 use Phin\Providers\ConfigServiceProvider;
-use Phin\Providers\FakerServiceProvider;
-use Phin\Providers\HttpServiceProvider;
-use Phin\Providers\ExceptionHandlerServiceProvider;
+use Symfony\Component\Debug\ExceptionHandler;
 
 class Application extends Container
 {
@@ -30,7 +19,7 @@ class Application extends Container
     {
         $this['request'] = $request;
         try {
-            $response = RouteFacade::dispatch($request);
+            $response = $this['router']->dispatch($request);
         } catch (Exception $e) {
             $response = $this[ExceptionHandler::class]->handle($e);
         }
@@ -85,30 +74,19 @@ class Application extends Container
 
     private function registerServiceProviders()
     {
-        with(new ConfigServiceProvider($this))->register();
-        with(new EventServiceProvider($this))->register();
-        with(new RoutingServiceProvider($this))->register();
-        with(new FilesystemServiceProvider($this))->register();
-        with(new ViewServiceProvider($this))->register();
-        with(new FakerServiceProvider($this))->register();
-        with(new HttpServiceProvider($this))->register();
-        with(new ExceptionHandlerServiceProvider($this))->register();
-    }
-
-    private function registerServiceAliases()
-    {
-        $this->singleton(ViewFactoryContract::class, function ($this) {
-            return $this['view'];
-        });
-        $this->singleton(Dispatcher::class, function ($this) {
-            return $this['events'];
-        });
+        $providers = $this['config']->get('providers', []);
+        foreach ($providers as $provider) {
+            with(new $provider($this))->register();
+        }
     }
 
     private function registerFacades()
     {
         Facade::setFacadeApplication($this);
-        class_alias(RouteFacade::class, 'Route');
+        $facades = $this['config']->get('aliases', []);
+        foreach ($facades as $alias=>$class) {
+            class_alias($class, $alias);
+        }
     }
 
     private function setEnv()
@@ -124,11 +102,11 @@ class Application extends Container
         Container::setInstance($this);
 
         $this->loadEnvironment();
+        with(new ConfigServiceProvider($this))->register();
         $this->registerServiceProviders();
+        $this->registerFacades();
         // Bind path after config is loaded
         $this->instance('path', $this->path());
-        $this->registerServiceAliases();
-        $this->registerFacades();
         $this->loadRoutesFrom(site_path('routes.php'));
         $this->setEnv();
     }

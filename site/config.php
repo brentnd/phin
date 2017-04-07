@@ -17,4 +17,22 @@ return [
     'analytics' => [
         'trackingId' => env('ANALYTICS_ID'),
     ],
+    'providers' => [
+        /*
+         * Core, required service providers
+         */
+        Phin\Providers\ExceptionHandlerServiceProvider::class,
+        Illuminate\Routing\RoutingServiceProvider::class,
+        Illuminate\Filesystem\FilesystemServiceProvider::class,
+        Illuminate\View\ViewServiceProvider::class,
+        Illuminate\Events\EventServiceProvider::class,
+
+        /*
+         * Extra, optional service providers
+         */
+        Phin\Providers\FakerServiceProvider::class,
+    ],
+    'aliases' => [
+        'Route' => Illuminate\Support\Facades\Route::class,
+    ],
 ];
