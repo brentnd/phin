@@ -60,15 +60,15 @@ class InitCommand extends Command
             $this->files->copy($copyFrom . '/site/public/index.php', $this->base . '/public/index.php');
             $this->files->copy($copyFrom . '/site/site/routes.php',  $this->base . '/site/routes.php');
             $this->files->copy($copyFrom . '/site/config.php',       $this->base . '/config.php');
-            $this->files->copy($copyFrom . '/site/composer.json',    $this->base . '/composer.json');
         } else {
             $this->files->copyDirectory($copyFrom . '/site/', $this->base);
             $this->files->copy($this->base . '/.env.example', $this->base . '/.env');
         }
-        if (file_exists($this->base . '/composer.json')) {
+        if (!file_exists($this->base . '/composer.json')) {
             $this->info("Updating dependencies with composer in {$this->base}");
             chdir($this->base);
-            passthru('composer update');
+            passthru('composer require brentnd/phin');
+            passthru('composer require fzaninotto/faker');
         }
         $this->info("Phin initialized successfully!");
     }
