@@ -63,6 +63,7 @@ class InitCommand extends Command
             $this->files->copy($copyFrom . '/site/composer.json',    $this->base . '/composer.json');
         } else {
             $this->files->copyDirectory($copyFrom . '/site/', $this->base);
+            $this->files->copy($this->base . '/.env.example', $this->base . '/.env');
         }
         if (file_exists($this->base . '/composer.json')) {
             $this->info("Updating dependencies with composer in {$this->base}");
