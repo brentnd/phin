@@ -4,11 +4,11 @@ namespace Phin;
 
 use Exception;
 use Dotenv\Dotenv;
+use Illuminate\Config\Repository;
 use Illuminate\Container\Container;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Facade;
-use Phin\Providers\ConfigServiceProvider;
 use Symfony\Component\Debug\ExceptionHandler;
 
 class Application extends Container
@@ -57,23 +57,35 @@ class Application extends Container
 
     protected function loadRoutesFrom($path)
     {
-        $router = $this['router'];
         $namespace = $this['config']->get('site.namespace', 'Site');
-        $router->group(['namespace' => $namespace], function (Router $router) use ($path) {
+        $this['router']->group(['namespace' => $namespace], function (Router $router) use ($path) {
             require $path;
         });
     }
 
-    private function loadEnvironment()
+    private function loadEnvironmentAndConfig()
     {
         if (file_exists($this->basePath() . '/.env')) {
             $dotenv = new Dotenv($this->basePath());
             $dotenv->load();
         }
+        $this['env'] = $this['config']->get('env', 'production');
+        // Bind path after config is loaded
+        $this->instance('path', $this->path());
     }
 
     private function registerServiceProviders()
     {
+        // Config is required before any other providers
+        $this->singleton('config', function ($app) {
+            $config = new Repository(require base_path('config.php'));
+            date_default_timezone_set($config['timezone']);
+            return $config;
+        });
+        // Exception handler is always required
+        $this->singleton(ExceptionHandler::class, function ($app) {
+            return new ExceptionHandler($app['config']->get('debug', false));
+        });
         $providers = $this['config']->get('providers', []);
         foreach ($providers as $provider) {
             with(new $provider($this))->register();
@@ -89,25 +101,14 @@ class Application extends Container
         }
     }
 
-    private function setEnv()
+    public function __construct($basePath)
     {
-        $this['env'] = $this['config']->get('env', 'production');
-    }
-
-    public function __construct($basePath = null)
-    {
-        if ($basePath) {
-            $this->setBasePath($basePath);
-        }
+        $this->setBasePath($basePath);
         Container::setInstance($this);
 
         $this->loadEnvironment();
-        with(new ConfigServiceProvider($this))->register();
         $this->registerServiceProviders();
         $this->registerFacades();
-        // Bind path after config is loaded
-        $this->instance('path', $this->path());
         $this->loadRoutesFrom(site_path('routes.php'));
-        $this->setEnv();
     }
 }
