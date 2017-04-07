@@ -56,7 +56,6 @@ class InitCommand extends Command
             $this->files->makeDirectory($this->base . '/resources/assets/sass/');
             $this->files->makeDirectory($this->base . '/resources/views/');
             $this->files->makeDirectory($this->base . '/site/');
-            $this->files->copyDirectory($copyFrom . '/site/bootstrap/', $this->base . '/bootstrap/');
             $this->files->copy($copyFrom . '/site/public/.htaccess', $this->base . '/public/.htaccess');
             $this->files->copy($copyFrom . '/site/public/index.php', $this->base . '/public/index.php');
             $this->files->copy($copyFrom . '/site/site/routes.php',  $this->base . '/site/routes.php');
@@ -64,11 +63,10 @@ class InitCommand extends Command
         } else {
             $this->files->copyDirectory($copyFrom . '/site/', $this->base);
         }
-
-        if (!file_exists($this->base . '/composer.json')) {
-            $this->info("Installing brentnd/phin with composer in {$this->base}");
+        if (file_exists($this->base . '/composer.json')) {
+            $this->info("Updating dependencies with composer in {$this->base}");
             chdir($this->base);
-            passthru('composer require brentnd/phin');
+            passthru('composer update');
         }
         $this->info("Phin initialized successfully!");
     }

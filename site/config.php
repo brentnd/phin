@@ -30,9 +30,12 @@ return [
         /*
          * Extra, optional service providers
          */
-        Phin\Providers\FakerServiceProvider::class,
     ],
     'aliases' => [
         'Route' => Illuminate\Support\Facades\Route::class,
+
+        /*
+         * Extra, optional facade aliases
+         */
     ],
 ];

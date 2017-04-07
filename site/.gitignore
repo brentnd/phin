@@ -4,3 +4,4 @@ public/build
 public/css
 public/js
 .env
+composer.lock

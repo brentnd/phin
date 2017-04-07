@@ -3,7 +3,6 @@
 namespace Site;
 
 use Phin\Controller;
-use Phin\Facades\Faker;
 
 class PageController extends Controller
 {
@@ -19,10 +18,11 @@ class PageController extends Controller
 
     private function fakeService()
     {
+        $faker = Faker\Factory::create();
         return [
-                'title' => Faker::word(),
-                'icon' => Faker::randomElement($array = $this->icons),
-                'content' => implode(' ', Faker::sentences(3)),
+                'title' => $faker->word(),
+                'icon' => $faker->randomElement($array = $this->icons),
+                'content' => implode(' ', $faker->sentences(3)),
             ];
     }
 }
