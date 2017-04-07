@@ -60,6 +60,7 @@ class InitCommand extends Command
             $this->files->copy($copyFrom . '/site/public/index.php', $this->base . '/public/index.php');
             $this->files->copy($copyFrom . '/site/site/routes.php',  $this->base . '/site/routes.php');
             $this->files->copy($copyFrom . '/site/config.php',       $this->base . '/config.php');
+            $this->files->copy($copyFrom . '/site/composer.json',    $this->base . '/composer.json');
         } else {
             $this->files->copyDirectory($copyFrom . '/site/', $this->base);
         }

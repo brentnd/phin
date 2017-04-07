@@ -1,0 +1,6 @@
+{
+    "require": {
+        "brentnd/phin": "^0.0.1",
+        "fzaninotto/faker": "^1.6"
+    }
+}
