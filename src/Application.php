@@ -106,7 +106,7 @@ class Application extends Container
         $this->setBasePath($basePath);
         Container::setInstance($this);
 
-        $this->loadEnvironment();
+        $this->loadEnvironmentAndConfig();
         $this->registerServiceProviders();
         $this->registerFacades();
         $this->loadRoutesFrom(site_path('routes.php'));
