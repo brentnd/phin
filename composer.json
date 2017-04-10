@@ -23,8 +23,9 @@
         "illuminate/events": "^5.4",
         "illuminate/support": "^5.4",
         "illuminate/config": "^5.4",
+        "vlucas/phpdotenv": "^2.4",
         "symfony/console": "^2.5|^3.0",
-        "vlucas/phpdotenv": "^2.4"
+        "guzzlehttp/guzzle": "^6.2"
     },
     "require-dev": {
     },

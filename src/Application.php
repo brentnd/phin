@@ -69,6 +69,12 @@ class Application extends Container
             $dotenv = new Dotenv($this->basePath());
             $dotenv->load();
         }
+        // Config is required before any other providers
+        $this->singleton('config', function ($app) {
+            $config = new Repository(require base_path('config.php'));
+            date_default_timezone_set($config['timezone']);
+            return $config;
+        });
         $this['env'] = $this['config']->get('env', 'production');
         // Bind path after config is loaded
         $this->instance('path', $this->path());
@@ -76,12 +82,6 @@ class Application extends Container
 
     private function registerServiceProviders()
     {
-        // Config is required before any other providers
-        $this->singleton('config', function ($app) {
-            $config = new Repository(require base_path('config.php'));
-            date_default_timezone_set($config['timezone']);
-            return $config;
-        });
         // Exception handler is always required
         $this->singleton(ExceptionHandler::class, function ($app) {
             return new ExceptionHandler($app['config']->get('debug', false));

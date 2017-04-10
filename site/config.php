@@ -21,7 +21,6 @@ return [
         /*
          * Core, required service providers
          */
-        Phin\Providers\ExceptionHandlerServiceProvider::class,
         Illuminate\Routing\RoutingServiceProvider::class,
         Illuminate\Filesystem\FilesystemServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
