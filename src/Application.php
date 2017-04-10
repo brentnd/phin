@@ -101,6 +101,23 @@ class Application extends Container
         }
     }
 
+    public function registerCoreContainerAliases()
+    {
+        $aliases = [
+            'config'               => ['Illuminate\Config\Repository', 'Illuminate\Contracts\Config\Repository'],
+            'events'               => ['Illuminate\Events\Dispatcher', 'Illuminate\Contracts\Events\Dispatcher'],
+            'request'              => ['Illuminate\Http\Request', 'Symfony\Component\HttpFoundation\Request'],
+            'router'               => ['Illuminate\Routing\Router', 'Illuminate\Contracts\Routing\Registrar'],
+            'view'                 => ['Illuminate\View\Factory', 'Illuminate\Contracts\View\Factory'],
+        ];
+
+        foreach ($aliases as $key => $aliases) {
+            foreach ($aliases as $alias) {
+                $this->alias($key, $alias);
+            }
+        }
+    }
+
     public function __construct($basePath)
     {
         $this->setBasePath($basePath);
@@ -108,6 +125,7 @@ class Application extends Container
 
         $this->loadEnvironmentAndConfig();
         $this->registerServiceProviders();
+        $this->registerCoreContainerAliases();
         $this->registerFacades();
         $this->loadRoutesFrom(site_path('routes.php'));
     }
