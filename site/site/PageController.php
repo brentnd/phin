@@ -10,11 +10,20 @@ class PageController extends Controller
     protected $icons = ['bath', 'rocket', 'anchor', 'barcode', 'quora', 'futbol-o', 'fire', 'flask'];
     public function home()
     {
-        $service = [];
+        $services = [];
         foreach (range(0, 8) as $number) {
             $services[] = $this->fakeService();
         }
         return view('pages.home', compact('services'));
+    }
+
+    public function json()
+    {
+        $services = [];
+        foreach (range(0, 8) as $number) {
+            $services[] = $this->fakeService();
+        }
+        return response()->json($services);
     }
 
     private function fakeService()
