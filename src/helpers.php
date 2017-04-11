@@ -63,9 +63,9 @@ if (! function_exists('environment')) {
     function environment($check = null)
     {
         if ($check) {
-            return app('env') === $check;
+            return config('env') === $check;
         } else {
-            return app('env');
+            return config('env', 'production');
         }
     }
 }

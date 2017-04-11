@@ -29,8 +29,6 @@ class Application extends Container
     public function setBasePath($basePath)
     {
         $this->basePath = rtrim($basePath, '\/');
-        $this->bindPathsInContainer();
-        return $this;
     }
 
     public function basePath()
@@ -51,6 +49,7 @@ class Application extends Container
 
     protected function bindPathsInContainer()
     {
+        $this->instance('path', $this->path());
         $this->instance('path.base', $this->basePath());
         $this->instance('path.public', $this->publicPath());
     }
@@ -63,26 +62,25 @@ class Application extends Container
         });
     }
 
-    private function loadEnvironmentAndConfig()
+    private function loadEnvironment()
     {
-        if (file_exists($this->basePath() . '/.env')) {
-            $dotenv = new Dotenv($this->basePath());
+        if (file_exists($this->basePath . '/.env')) {
+            $dotenv = new Dotenv($this->basePath);
             $dotenv->load();
         }
-        // Config is required before any other providers
+    }
+
+    private function registerConfig()
+    {
         $this->singleton('config', function ($app) {
             $config = new Repository(require base_path('config.php'));
             date_default_timezone_set($config['timezone']);
             return $config;
         });
-        $this['env'] = $this['config']->get('env', 'production');
-        // Bind path after config is loaded
-        $this->instance('path', $this->path());
     }
 
     private function registerServiceProviders()
     {
-        // Exception handler is always required
         $this->singleton(ExceptionHandler::class, function ($app) {
             return new ExceptionHandler($app['config']->get('debug', false));
         });
@@ -104,11 +102,11 @@ class Application extends Container
     public function registerCoreContainerAliases()
     {
         $aliases = [
-            'config'               => ['Illuminate\Config\Repository', 'Illuminate\Contracts\Config\Repository'],
-            'events'               => ['Illuminate\Events\Dispatcher', 'Illuminate\Contracts\Events\Dispatcher'],
-            'request'              => ['Illuminate\Http\Request', 'Symfony\Component\HttpFoundation\Request'],
-            'router'               => ['Illuminate\Routing\Router', 'Illuminate\Contracts\Routing\Registrar'],
-            'view'                 => ['Illuminate\View\Factory', 'Illuminate\Contracts\View\Factory'],
+            'config'  => ['Illuminate\Config\Repository', 'Illuminate\Contracts\Config\Repository'],
+            'events'  => ['Illuminate\Events\Dispatcher', 'Illuminate\Contracts\Events\Dispatcher'],
+            'request' => ['Illuminate\Http\Request', 'Symfony\Component\HttpFoundation\Request'],
+            'router'  => ['Illuminate\Routing\Router', 'Illuminate\Contracts\Routing\Registrar'],
+            'view'    => ['Illuminate\View\Factory', 'Illuminate\Contracts\View\Factory'],
         ];
 
         foreach ($aliases as $key => $aliases) {
@@ -120,13 +118,14 @@ class Application extends Container
 
     public function __construct($basePath)
     {
-        $this->setBasePath($basePath);
         Container::setInstance($this);
-
-        $this->loadEnvironmentAndConfig();
+        $this->setBasePath($basePath);
+        $this->loadEnvironment();
+        $this->registerConfig();
         $this->registerServiceProviders();
         $this->registerCoreContainerAliases();
         $this->registerFacades();
+        $this->bindPathsInContainer();
         $this->loadRoutesFrom(site_path('routes.php'));
     }
 }
