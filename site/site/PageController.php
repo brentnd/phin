@@ -2,7 +2,7 @@
 
 namespace Site;
 
-use Phin\Controller;
+use Illuminate\Routing\Controller;
 use Faker\Factory as FakerFactory;
 
 class PageController extends Controller
