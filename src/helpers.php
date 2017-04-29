@@ -20,6 +20,29 @@ if (! function_exists('route')) {
     }
 }
 
+if (! function_exists('redirect')) {
+    function redirect($to = null, $status = 302, $headers = [], $secure = null)
+    {
+        if (is_null($to)) {
+            return app('redirect');
+        }
+        return app('redirect')->to($to, $status, $headers, $secure);
+    }
+}
+
+if (! function_exists('session')) {
+    function session($key = null, $default = null)
+    {
+        if (is_null($key)) {
+            return app('session');
+        }
+        if (is_array($key)) {
+            return app('session')->put($key);
+        }
+        return app('session')->get($key, $default);
+    }
+}
+
 if (! function_exists('asset')) {
     function asset($path, $secure = null)
     {

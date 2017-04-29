@@ -2,6 +2,7 @@
 
 namespace Site;
 
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Faker\Factory as FakerFactory;
 
@@ -15,6 +16,11 @@ class PageController extends Controller
             $services[] = $this->fakeService();
         }
         return view('pages.home', compact('services'));
+    }
+
+    public function redirect(Request $request)
+    {
+        return redirect()->route('home')->with('redirect', 'We redirected and flashed!');
     }
 
     public function json()

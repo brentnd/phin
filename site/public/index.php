@@ -6,8 +6,11 @@ $loader->addPsr4(config('site.namespace', 'Site') . '\\', site_path());
 
 use Illuminate\Http\Request;
 
-$response = $phin->handle(Request::capture());
+$request = Request::capture();
+$response = $phin->handle($request);
 
 if ($response) {
 	$response->send();
 }
+
+$phin->terminate($request, $response);

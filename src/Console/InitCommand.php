@@ -49,6 +49,9 @@ class InitCommand extends Command
         if ($this->input->getOption('bare')) {
             $this->info('Skipping resources and controllers');
             $this->files->makeDirectory($this->base);
+            $this->files->makeDirectory($this->base . '/framework/');
+            $this->files->makeDirectory($this->base . '/framework/compiled');
+            $this->files->makeDirectory($this->base . '/framework/sessions');
             $this->files->makeDirectory($this->base . '/public/');
             $this->files->makeDirectory($this->base . '/resources/');
             $this->files->makeDirectory($this->base . '/resources/assets/');
