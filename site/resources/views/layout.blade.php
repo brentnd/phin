@@ -19,49 +19,59 @@
         <![endif]-->
     </head>
     <body id="page-top">
-        <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <nav class="navbar is-dark is-fixed-top">
             <div class="container">
-                <div class="navbar-header page-scroll">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
-                    </button>
-                    <a class="navbar-brand page-scroll" href="#page-top">
+                <div class="navbar-brand">
+                    <a class="navbar-item has-text-weight-bold" href="/">
                         {{ config('site.name') }}
                     </a>
+                    <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
                 </div>
-                <div class="collapse navbar-collapse" id="navbar-collapse">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="hidden">
-                            <a href="#page-top"></a>
-                        </li>
-                        <li>
-                            <a class="page-scroll" href="#services">Services</a>
-                        </li>
-                        <li>
-                            <a class="page-scroll" href="#Menu">Menu</a>
-                        </li>
-                        <li>
-                            <a class="page-scroll" href="#Pricing">Pricing</a>
-                        </li>
-                        <li>
-                            <a class="page-scroll" href="#Contact">Contact</a>
-                        </li>
-                    </ul>
+                <div id="navbarExampleTransparentExample" class="navbar-menu">
+                    <div class="navbar-start">
+                        <a class="navbar-item page-scroll" href="#top">
+                            Home
+                        </a>
+                        <a class="navbar-item page-scroll" href="#services">
+                            Second
+                        </a>
+                    </div>
+                    <div class="navbar-end">
+                        <a class="navbar-item page-scroll" href="#menu">
+                            Menu
+                        </a>
+                        <a class="navbar-item page-scroll" href="#pricing">
+                            Pricing
+                        </a>
+                        <a class="navbar-item page-scroll" href="#contact">
+                            Contact
+                        </a>
+                        <div class="navbar-item">
+                            <a class="button is-primary" href="#">
+                                <i class="fa fa-ravelry"></i>&nbsp;Action
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </nav>
 
         @yield('body')
 
-        <footer class="navbar-inverse">
+        <footer class="footer">
             <div class="container">
-                <p>Copyright &copy; {{ config('site.name') }}. {{ date('Y') }}</p>
+                <div class="content has-text-centered">
+                    <p>Copyright &copy; {{ config('site.name') }}. {{ date('Y') }}</p>
+                </div>
             </div>
         </footer>
 
         <!-- Scripts -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
         <script src="{{ elixir('js/site.js') }}"></script>
         @include('partials.analytics')

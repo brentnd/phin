@@ -3,21 +3,37 @@
 @section('title', 'Home page')
 
 @section('body')
-<header>
-    <div class="container intro-text">
-	    @if (session('redirect'))
-	        <div class="alert alert-dismissible alert-info">
-	            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-	            <strong><i class="fa fa-info-circle"></i> </strong>
-	            {{ session('redirect') }}
-	        </div>
-	    @endif
-        <h3>Another {{ config('site.name') }} site.</h3>
-        <h1>See the rest</h1>
-        <a href="#services" class="page-scroll btn btn-lg btn-primary">Learn More</a>
+<section class="hero has-bg-city is-fullheight">
+    <div class="hero-head">
+        @if (session('redirect'))
+            <div class="alert alert-dismissible alert-info">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong><i class="fa fa-info-circle"></i> </strong>
+                {{ session('redirect') }}
+            </div>
+        @endif
     </div>
-</header>
-<section id="services">
-    @include('pages.partials.services', compact('services'))
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <h1 class="title">
+                Another {{ config('site.name') }} site.
+            </h1>
+            <h2 class="subtitle">
+                See the rest
+            </h2>
+            <a href="#services" class="page-scroll button is-primary">Learn More</a>
+        </div>
+    </div>
+</section>
+<section id="services" class="section">
+    <div class="container has-text-centered">
+        <h1 class="title">Services</h1>
+        <h2 class="subtitle">
+            A list of our stuff
+        </h2>
+    </div>
+    <div class="container">
+        @include('pages.partials.services', compact('services'))
+    </div>
 </section>
 @endsection
