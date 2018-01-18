@@ -18,7 +18,7 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
     </head>
-    <body id="page-top">
+    <body id="top">
         <nav class="navbar is-dark is-fixed-top">
             <div class="container">
                 <div class="navbar-brand">
