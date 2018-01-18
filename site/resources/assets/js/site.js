@@ -16,4 +16,8 @@
         $('#' + $(this).data('target')).toggleClass('is-active');
     });
 
+    $('.notification > button.delete').bind('click', function(event) {
+        $(this).parent().addClass('is-hidden');
+    });
+
 })(jQuery); // End of use strict

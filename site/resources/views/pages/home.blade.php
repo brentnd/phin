@@ -4,17 +4,15 @@
 
 @section('body')
 <section class="hero has-bg-city is-fullheight">
-    <div class="hero-head">
-        @if (session('redirect'))
-            <div class="alert alert-dismissible alert-info">
-                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                <strong><i class="fa fa-info-circle"></i> </strong>
-                {{ session('redirect') }}
-            </div>
-        @endif
-    </div>
     <div class="hero-body">
         <div class="container has-text-centered">
+            @if (session('redirect'))
+                <div class="notification is-info">
+                    <button class="delete"></button>
+                    <strong><i class="fa fa-info-circle"></i> </strong>
+                    {{ session('redirect') }}
+                </div>
+            @endif
             <h1 class="title">
                 Another {{ config('site.name') }} site.
             </h1>
