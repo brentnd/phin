@@ -14,7 +14,7 @@ The goal is to have sites created with Phin have maximum similarities with Larav
 * [Illuminate Support](https://github.com/illuminate/support)
 * [Illuminate View](https://github.com/illuminate/view) - Blade Template Rendering
 * [Illuminate Config](https://github.com/illuminate/config)
-* Custom [Bootstrap Sass](http://getbootstrap.com/css/#sass) import
+* [Bulma CSS](https://bulma.io/) imported with standard component examples
 * [Jquery-easing](http://gsgd.co.uk/sandbox/jquery/easing/) for single-page sites
 * Updating Copyright date
 * Gulp integration with [Laravel Elixir](https://github.com/laravel/elixir) including minification and versioning
@@ -22,7 +22,7 @@ The goal is to have sites created with Phin have maximum similarities with Larav
 * [FontAwesome](http://fontawesome.io/) icon set
 * Http Client ([guzzle](https://github.com/guzzle/guzzle))
 * Google Analytics
-* [Bootswatch](https://bootswatch.com/) theme installer
+* [Bulmaswatch](https://jenil.github.io/bulmaswatch/) theme installer
 
 ### Future Ideas
 * Deployment control commands

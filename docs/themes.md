@@ -2,10 +2,10 @@
 layout: default
 ---
 
-## Bootswatch Themes
-The basic site comes stock with Bootstrap. To add some alternate styling as a starting point for the Phin site, use the `theme` command.
+## Bulma Themes
+The basic site comes stock with [Bulma](https://bulma.io/). To add some alternate styling as a starting point for the Phin site, use the `theme` command.
 
-Switch to Bootswatch's Cosmo theme:
+Switch to Bulmawatch's Cosmo theme:
 ```
 $ phin theme cosmo
 ```
