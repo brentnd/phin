@@ -1,8 +1,8 @@
 
-@import "theme/mixins";
 @import "theme/variables";
-@import 'node_modules/bulma/bulma';
-@import "theme/swatch";
+@import "node_modules/bulma/bulma";
+@import "theme/overrides";
+@import "mixins";
 
 #logo {
   max-width: 100%;

@@ -22,7 +22,7 @@ class ThemeCommand extends Command
     protected function configure()
     {
         $this->setName('theme')
-            ->setDescription('Install a Bootswatch theme.')
+            ->setDescription('Install a Bulmaswatch theme.')
             ->addArgument(
                 'theme',
                 InputArgument::REQUIRED,
@@ -38,9 +38,9 @@ class ThemeCommand extends Command
             return;
         }
 
-        $res = $this->client->get('https://bootswatch.com/api/3.json');
+        $res = $this->client->get('https://jenil.github.io/bulmaswatch/api/themes.json');
         if ($res->getStatusCode() != 200) {
-            $this->error("Can't reach bootswatch.com, exiting.");
+            $this->error("Can't reach github.io, exiting.");
             return;
         }
 
@@ -50,7 +50,7 @@ class ThemeCommand extends Command
                 return $this->install($theme);
             }
         }
-        $this->error("{$name} is not a valid Bootswatch theme.");
+        $this->error("{$name} is not a valid Bulmaswatch theme.");
     }
 
     protected function install($theme)
@@ -60,11 +60,12 @@ class ThemeCommand extends Command
             $this->files->makeDirectory($this->base . '/resources/assets/sass/');            
         }
         $this->client->request('GET',
-                        $theme->scss,
-                        ['sink' => $this->base . '/resources/assets/sass/theme/_bootswatch.scss']);
-        $this->client->request('GET',
                         $theme->scssVariables,
                         ['sink' => $this->base . '/resources/assets/sass/theme/_variables.scss']);
-        $this->info("{$theme->name} installed successfully!");        
+        $this->client->request('GET',
+                        // Overrides not exposed in bulmaswatch API.
+                        str_replace('_variables.scss', '_overrides.scss', $theme->scssVariables),
+                        ['sink' => $this->base . '/resources/assets/sass/theme/_overrides.scss']);
+        $this->info("{$theme->name} installed successfully!");
     }
 }
