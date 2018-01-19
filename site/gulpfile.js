@@ -15,6 +15,8 @@ elixir(function(mix) {
         'site.scss'
     ], 'public/css/site.css');
     mix.scripts([
+        '../../../node_modules/jquery/dist/jquery.js',
+        '../../../node_modules/jquery.easing/jquery.easing.js',
         'site.js',
     ], 'public/js/site.js');
     mix.version([

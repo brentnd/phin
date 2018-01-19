@@ -71,8 +71,6 @@
         </footer>
 
         <!-- Scripts -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
         <script src="{{ elixir('js/site.js') }}"></script>
         @include('partials.analytics')
         @yield('scripts')

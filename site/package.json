@@ -3,6 +3,8 @@
   "devDependencies": {
     "gulp": "^3.8.8",
     "laravel-elixir": "^6.0.0-15",
-    "bulma": "^0.6.2"
+    "bulma": "^0.6.2",
+    "jquery": "^3.2.1",
+    "jquery.easing": "^1.4.1"
   }
 }
