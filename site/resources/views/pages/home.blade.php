@@ -28,7 +28,7 @@
         <div class="container">
             <div class="columns is-vcentered">
                 <div class="column is-4">
-                    <p class="title">Phin Tag</p>
+                    <p class="title">{{ config('site.name') }} Tag</p>
                     <p class="subtitle">Check this big thing out!</p>
                 </div>
             </div>
