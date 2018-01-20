@@ -1,10 +1,14 @@
-<!DOCTYPE html>
+<!doctype html> <!-- HTML5 -->
 <html lang="en">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>@yield('title')</title>
+
+        <meta name="description" content="TODO: site description, less than 150 characters">
+
+        <link rel="icon" type="image/png" href="/favicon.png">
 
         <!-- Custom Fonts -->
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
