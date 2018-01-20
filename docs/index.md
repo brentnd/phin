@@ -32,4 +32,3 @@ The goal is to have sites created with Phin have maximum similarities with Larav
 	* Contact form (Laravel Collective?)
 	* Portfolio/gallery
 * Custom error pages
-* Illuminate/mailer support

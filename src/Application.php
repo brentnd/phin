@@ -62,11 +62,17 @@ class Application extends Container
         return $this->basePath.DIRECTORY_SEPARATOR.'public';
     }
 
+    public function resourcePath()
+    {
+        return $this->basePath.DIRECTORY_SEPARATOR.'resources';
+    }
+
     protected function bindPathsInContainer()
     {
         $this->instance('path', $this->path());
         $this->instance('path.base', $this->basePath());
         $this->instance('path.public', $this->publicPath());
+        $this->instance('path.resource', $this->resourcePath());
     }
 
     protected function loadMiddleware()
@@ -110,6 +116,12 @@ class Application extends Container
             date_default_timezone_set($config['timezone']);
             return $config;
         });
+    }
+
+    // For illuminate/mail
+    public function runningInConsole()
+    {
+        return true;
     }
 
     private function registerServiceProviders()

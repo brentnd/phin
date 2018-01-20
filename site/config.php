@@ -8,11 +8,28 @@ return [
     'site' => [
         'name' => env('SITE_NAME'),
     ],
+    'app' => [
+        // For mailer which references app.name
+        'name' => env('SITE_NAME'),
+    ],
     'view' => [
         'paths' => [
             realpath(base_path('resources/views')),
         ],
         'compiled' => realpath(base_path('framework/compiled')),
+    ],
+    'mail' => [
+        "driver" => "smtp",
+        "host" => "smtp.mailtrap.io",
+        "port" => 2525,
+        "from" => array(
+          "address" => "from@example.com",
+          "name" => "Example"
+        ),
+        "username" => "ebe94f5a45aa18",
+        "password" => "cc6dbca23c0608",
+        "sendmail" => "/usr/sbin/sendmail -bs",
+        "pretend" => false
     ],
     'analytics' => [
         'trackingId' => env('ANALYTICS_ID'),
@@ -30,6 +47,7 @@ return [
         /*
          * Extra, optional service providers
          */
+        Illuminate\Mail\MailServiceProvider::class,
     ],
     'aliases' => [
         /*
@@ -40,6 +58,7 @@ return [
         /*
          * Extra, optional facade aliases
          */
+        'Mail' => Illuminate\Support\Facades\Mail::class,
     ],
     'middleware' => [
         /*

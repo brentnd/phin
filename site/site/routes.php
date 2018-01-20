@@ -25,3 +25,8 @@ Route::get('/redirect', [
 	'as' => 'redirect',
 	'uses' => 'PageController@redirect'
 ]);
+
+Route::get('/mail', [
+  'as' => 'mail',
+  'uses' => 'PageController@mail'
+]);

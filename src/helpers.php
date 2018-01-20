@@ -20,6 +20,16 @@ if (! function_exists('route')) {
     }
 }
 
+if (! function_exists('url')) {
+    function url($path = null, $parameters = [], $secure = null)
+    {
+        if (is_null($path)) {
+            return app(UrlGenerator::class);
+        }
+        return app(UrlGenerator::class)->to($path, $parameters, $secure);
+    }
+}
+
 if (! function_exists('redirect')) {
     function redirect($to = null, $status = 302, $headers = [], $secure = null)
     {
