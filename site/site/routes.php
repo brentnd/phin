@@ -15,18 +15,3 @@ Route::get('/', [
 	'as' => 'home',
 	'uses' => 'PageController@home'
 ]);
-
-Route::get('/json', [
-	'as' => 'json',
-	'uses' => 'PageController@json'
-]);
-
-Route::get('/redirect', [
-	'as' => 'redirect',
-	'uses' => 'PageController@redirect'
-]);
-
-Route::get('/mail', [
-  'as' => 'mail',
-  'uses' => 'PageController@mail'
-]);

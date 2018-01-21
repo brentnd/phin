@@ -129,7 +129,15 @@ class Application extends Container
         $this->singleton(ExceptionHandler::class, function ($app) {
             return new ExceptionHandler($app['config']->get('debug', false));
         });
-        $providers = $this['config']->get('providers', []);
+
+        $core_providers = [
+            'Illuminate\Routing\RoutingServiceProvider',
+            'Illuminate\Filesystem\FilesystemServiceProvider',
+            'Illuminate\View\ViewServiceProvider',
+            'Illuminate\Events\EventServiceProvider',
+        ];
+
+        $providers = array_merge($core_providers, $this['config']->get('providers', []));
         foreach ($providers as $provider) {
             with(new $provider($this))->register();
         }
@@ -138,7 +146,12 @@ class Application extends Container
     private function registerFacades()
     {
         Facade::setFacadeApplication($this);
-        $facades = $this['config']->get('aliases', []);
+
+        $core_facades = [
+            'Route' => 'Illuminate\Support\Facades\Route',
+        ];
+
+        $facades = array_merge($core_facades, $this['config']->get('aliases', []));
         foreach ($facades as $alias=>$class) {
             class_alias($class, $alias);
         }
@@ -147,13 +160,13 @@ class Application extends Container
     public function registerCoreContainerAliases()
     {
         $aliases = [
-            'config'  => ['Illuminate\Config\Repository', 'Illuminate\Contracts\Config\Repository'],
-            'events'  => ['Illuminate\Events\Dispatcher', 'Illuminate\Contracts\Events\Dispatcher'],
-            'request' => ['Illuminate\Http\Request', 'Symfony\Component\HttpFoundation\Request'],
-            'router'  => ['Illuminate\Routing\Router', 'Illuminate\Contracts\Routing\Registrar'],
-            'view'    => ['Illuminate\View\Factory', 'Illuminate\Contracts\View\Factory'],
-            'session'              => ['Illuminate\Session\SessionManager'],
-            'session.store'        => ['Illuminate\Session\Store', 'Symfony\Component\HttpFoundation\Session\SessionInterface'],
+            'config'        => ['Illuminate\Config\Repository', 'Illuminate\Contracts\Config\Repository'],
+            'events'        => ['Illuminate\Events\Dispatcher', 'Illuminate\Contracts\Events\Dispatcher'],
+            'request'       => ['Illuminate\Http\Request',      'Symfony\Component\HttpFoundation\Request'],
+            'router'        => ['Illuminate\Routing\Router',    'Illuminate\Contracts\Routing\Registrar'],
+            'view'          => ['Illuminate\View\Factory',      'Illuminate\Contracts\View\Factory'],
+            'session'       => ['Illuminate\Session\SessionManager'],
+            'session.store' => ['Illuminate\Session\Store',     'Symfony\Component\HttpFoundation\Session\SessionInterface'],
         ];
 
         foreach ($aliases as $key => $aliases) {

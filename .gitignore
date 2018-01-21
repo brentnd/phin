@@ -6,4 +6,3 @@ vendor
 site/public/build
 site/public/css
 site/public/js
-site/composer.*

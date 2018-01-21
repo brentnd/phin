@@ -40,20 +40,11 @@
                         <a class="navbar-item page-scroll" href="#top">
                             Home
                         </a>
-                        <a class="navbar-item page-scroll" href="#services">
-                            Second
+                        <a class="navbar-item page-scroll" href="#section2">
+                            Section 2
                         </a>
                     </div>
                     <div class="navbar-end">
-                        <a class="navbar-item page-scroll" href="#menu">
-                            Menu
-                        </a>
-                        <a class="navbar-item page-scroll" href="#pricing">
-                            Pricing
-                        </a>
-                        <a class="navbar-item page-scroll" href="#contact">
-                            Contact
-                        </a>
                         <div class="navbar-item">
                             <a class="button is-primary" href="#">
                                 <i class="fa fa-ravelry"></i>&nbsp;Action

@@ -9,7 +9,7 @@
   height: 50px;
 }
 
-section.has-bg-city {
+section.has-bg-header {
     background-image: url('/img/header-bg.jpg');
     @include background-cover;
     .title, .subtitle {
