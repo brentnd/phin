@@ -121,7 +121,7 @@ class Application extends Container
     // For illuminate/mail
     public function runningInConsole()
     {
-        return true;
+        return php_sapi_name() == 'cli';
     }
 
     private function registerServiceProviders()
