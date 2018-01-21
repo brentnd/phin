@@ -1,5 +1,5 @@
 {
     "require": {
-        "brentnd/phin": "dev-master"
+        "brentnd/phin": "^1.0.0"
     }
 }
