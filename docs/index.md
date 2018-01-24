@@ -23,12 +23,3 @@ The goal is to have sites created with Phin have maximum similarities with Larav
 * Http Client ([guzzle](https://github.com/guzzle/guzzle))
 * Google Analytics
 * [Bulmaswatch](https://jenil.github.io/bulmaswatch/) theme installer
-
-### Future Ideas
-* Deployment control commands
-* Other common sections
-	* Pricing
-	* About us (team page?)
-	* Contact form (Laravel Collective?)
-	* Portfolio/gallery
-* Custom error pages
